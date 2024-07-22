@@ -4,3 +4,57 @@
   justify-content: center;
   align-items: center;
 }
+
+/*포인트1*/
+.highlight1 {
+  position: relative;
+}
+
+.highlight1::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 10%; /* 원을 날짜 아래에 배치 */
+  transform: translateX(-50%);
+  width: 12px; /* 원의 크기 조절 */
+  height: 12px; /* 원의 크기 조절 */
+  border-radius: 50%;
+  background-color: rgb(0, 255, 123); /* 원의 색상 조절 */
+  z-index: 1;
+}
+
+/*포인트2*/
+.highlight2 {
+  position: relative;
+}
+
+.highlight2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 10%; /* 원을 날짜 아래에 배치 */
+  transform: translateX(-50%);
+  width: 12px; /* 원의 크기 조절 */
+  height: 12px; /* 원의 크기 조절 */
+  border-radius: 50%;
+  background-color: rgb(255, 225, 0); /* 원의 색상 조절 */
+  z-index: 1;
+}
+
+/*포인트3*/
+.highlight3 {
+  position: relative;
+}
+
+.highlight3::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 10%; /* 원을 날짜 아래에 배치 */
+  transform: translateX(-50%);
+  width: 12px; /* 원의 크기 조절 */
+  height: 12px; /* 원의 크기 조절 */
+  border-radius: 50%;
+  background-color: rgb(255, 0, 0); /* 원의 색상 조절 */
+  z-index: 1;
+}
