@@ -16,7 +16,17 @@ export default function Header() {
             <div>ooo님 어서오세요!</div>
           </div>
         </div>
-        <div className={styles["main-header-content2"]}>엘2</div>
+        <div className={styles["main-header-content2"]}>
+          <div className={styles["main-header-content2-e"]}>
+            <div className={styles["main-header-content2-e-light1"]}></div>좋음
+          </div>
+          <div className={styles["main-header-content2-e"]}>
+            <div className={styles["main-header-content2-e-light2"]}></div>보통
+          </div>
+          <div className={styles["main-header-content2-e"]}>
+            <div className={styles["main-header-content2-e-light3"]}></div>나쁨
+          </div>
+        </div>
       </div>
     </div>
   );
