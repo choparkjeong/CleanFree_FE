@@ -1,0 +1,48 @@
+.react-calendar {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #8de2ff;
+  font-family: "Arial", sans-serif;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px;
+  /* background: #f3f3f3; */
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.react-calendar__tile--active {
+  background: #00bfff;
+  color: white;
+  /* border-radius: 5px; */
+}
+
+.react-calendar__tile--now {
+  background: #00bfff;
+  color: rgb(255, 255, 255);
+  /* border-radius: 5px; */
+}
+
+.react-calendar__navigation button {
+  color: #00bfff;
+  min-width: 44px;
+  background: none;
+  font-size: 1.2em;
+  margin-top: 8px;
+}
+
+/*평일*/
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333;
+}
+
+/*주말*/
+.react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+}

@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 
+// 뷰포트 수정
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1, // 초기 확대 배율
@@ -16,7 +17,10 @@ export const metadata: Metadata = {
   description: "나만의 피부 일지를 기록해보세요!",
 };
 
-const inter = Inter({ subsets: ["latin"] });
+const noto = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export default function RootLayout({
   children,
@@ -30,9 +34,9 @@ export default function RootLayout({
         <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
-        />{" "}
+        />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={noto.className}>{children}</body>
     </html>
   );
 }
