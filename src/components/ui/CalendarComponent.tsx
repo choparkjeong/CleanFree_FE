@@ -6,12 +6,16 @@ import moment from "moment";
 import "react-calendar/dist/Calendar.css";
 import "@/styles/ui/CalendarStyles.css";
 import styles from "@/styles/ui/calendarStyles.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function CalendarComponent() {
+  const router = useRouter();
+
   const [value, onChange] = useState(new Date()); // 초기값은 현재 날짜
 
   const handleDayClick = (value: Date) => {
     console.log("Selected date:", value);
+    router.push(`/write/${value}`);
   };
 
   // 특정 날짜에 따라 다른 CSS 클래스를 적용하는 함수
