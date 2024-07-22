@@ -1,4 +1,4 @@
-.slider-container {
+.categorySlider-container {
   overflow: hidden;
   width: 100%;
 }
@@ -22,8 +22,8 @@
   padding-bottom: 5px;
 
   margin-right: 10px;
-  // background-color: #f0f0f0;
-  border: 1px solid rgba(136, 130, 255, 0.246);
+  background-color: rgb(136, 130, 255);
+  color: #ffffff;
   border-radius: 999px;
   text-align: center;
   font-size: 16px;

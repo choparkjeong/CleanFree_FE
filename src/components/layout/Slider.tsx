@@ -17,9 +17,9 @@ const fruits = [
   "망고",
 ];
 
-export default function MainSlider() {
+export default function Slider() {
   return (
-    <div className={styles["main-slider-container"]}>
+    <div className={styles["slider-container"]}>
       <div className={styles.slider}>
         {fruits.map((fruit, index) => (
           <div key={index} className={styles.slide}>

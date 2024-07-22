@@ -1,0 +1,60 @@
+.detail-scroll-container {
+  margin-top: 3%;
+  padding-bottom: 19vh;
+  background-color: rgb(236, 236, 236);
+}
+
+.detail-scroll-element {
+  width: 100%;
+  // background-color: rgb(236, 236, 236);
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  padding-top: 2vh;
+
+  text-decoration: none;
+}
+
+.detail-scroll-element-cover {
+  height: fit-content;
+  width: 100%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+
+  padding-left: 4%;
+  padding-right: 4%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* 요소들을 위아래로 균등하게 정렬 */
+  align-items: center;
+}
+
+.detail-scroll-element-cover-date {
+  width: 100%;
+  color: grey;
+  font-size: 15px;
+  //   background-color: red;
+}
+
+.detail-scroll-element-cover-img {
+  height: 52vh;
+  width: 100%;
+  margin-top: 1vh;
+  border-radius: 7px;
+}
+
+.detail-scroll-element-cover-title {
+  width: 100%;
+  color: black;
+  font-weight: bold;
+  font-size: 17px;
+  margin-top: 1vh;
+}
+.detail-scroll-element-cover-content {
+  width: 100%;
+  color: rgb(82, 82, 82);
+  font-size: 14px;
+  margin-top: 1vh;
+}
