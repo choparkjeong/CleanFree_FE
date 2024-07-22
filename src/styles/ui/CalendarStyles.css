@@ -1,7 +1,7 @@
 .react-calendar {
   border: none;
   border-radius: 10px;
-  box-shadow: 0 0 5px #00000044;
+  box-shadow: 0 0 5px rgba(136, 130, 255, 0.246);
   /* border: 1px solid rgb(215, 215, 215); */
   font-family: "Arial", sans-serif;
   width: 100%;

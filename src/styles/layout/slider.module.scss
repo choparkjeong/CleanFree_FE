@@ -1,0 +1,34 @@
+.main-slider-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  // background-color: red;
+  padding-left: 4%;
+  padding-top: 3%;
+}
+
+.slide {
+  display: inline-block;
+  // padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  margin-right: 10px;
+  // background-color: #f0f0f0;
+  border: 1px solid rgba(136, 130, 255, 0.246);
+  border-radius: 999px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
