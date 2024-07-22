@@ -1,9 +1,10 @@
 .main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
-  //   background: yellow;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  padding-left: 4%;
+  padding-right: 4%;
+  // background: yellow;
   //   background: linear-gradient(
   //     135deg,
   //     rgb(187, 238, 255),
@@ -11,4 +12,10 @@
   //     // #a4e8ff
   //   );
   //   background-color: #a2e8ff;
+  padding-bottom: 19vh;
+}
+
+.main-banner-img {
+  width: 100%;
+  height: fit-content;
 }
