@@ -1,4 +1,4 @@
-.main-header-container {
+.header-container {
   // position: fixed;
   display: flex;
   flex-direction: column;
@@ -9,11 +9,10 @@
   justify-content: end;
   top: 0;
   left: 0;
-  padding-bottom: 3%;
   background-color: white;
 }
 
-.main-header-element {
+.header-element {
   // background-color: green;
   width: 100%;
   height: 5vh;
@@ -24,14 +23,14 @@
   justify-content: space-between;
 }
 
-.main-header-content1-img {
+.header-content1-img {
   width: 5vh;
   height: 5vh;
   display: flex;
   margin-left: 4%;
 }
 
-.main-header-content1-input {
+.header-content1-input {
   background-color: rgb(236, 236, 236);
   border-radius: 999px;
   // aspect-ratio: 5 / 1;
@@ -39,7 +38,7 @@
   width: 65%;
 }
 
-.main-header-content1-alarm {
+.header-content1-alarm {
   display: flex;
   justify-content: center;
   align-items: center;
