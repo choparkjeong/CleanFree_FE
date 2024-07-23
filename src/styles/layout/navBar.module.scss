@@ -22,3 +22,33 @@
   padding-left: 28%; //8%
   padding-right: 28%; //8%
 }
+
+//글작성 관련 헤더
+//----------------------------글작성-----------------------------
+.writeNavBar-container {
+  position: fixed;
+  width: 100%;
+  height: 17vh;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  // background-color: aqua;
+}
+
+.writeNavBar-container-btn {
+  width: 90%;
+  height: 7vh;
+  display: flex;
+  // justify-content: start;
+  // align-items: end;
+  border-radius: 6px;
+  background-color: rgba(13, 0, 255, 0.53);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}

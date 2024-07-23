@@ -8,11 +8,21 @@ export default function SkinCareDiary() {
   const [selectedStatus, setSelectedStatus] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
-  const [value1, setValue1] = useState<string>("클렌징 제품");
-  const [value2, setValue2] = useState<string>("스킨케어 제품");
-  const [value3, setValue3] = useState<string>("기타 제품");
-  const [value4, setValue4] = useState<string>("운동 기록");
-  const [value5, setValue5] = useState<string>("오늘 먹은 음식");
+  const [value1, setValue1] = useState<string>(
+    "클렌징 제품 (Ex. 엠퀴리 클렌징 오일, 독도 클렌징 폼)"
+  );
+  const [value2, setValue2] = useState<string>(
+    "스킨케어 제품 (Ex. 독도 토너, 에스네이처 스쿠알란크림)"
+  );
+  const [value3, setValue3] = useState<string>(
+    "기타 제품 (Ex. 브링그린 알로에 팩)"
+  );
+  const [value4, setValue4] = useState<string>(
+    "운동 기록 (Ex. 유산소 30분, 헬스 1시간)"
+  );
+  const [value5, setValue5] = useState<string>(
+    "오늘 먹은 음식 (Ex. 된장찌개, 돈까스)"
+  );
   const [sleepHours, setSleepHours] = useState<number | null>(null); // 초기값을 null로 설정
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +89,7 @@ export default function SkinCareDiary() {
             checked={selectedStatus === "좋음"}
             onChange={handleChange}
           />
-          좋음🟢
+          <div>좋음🟢</div>
         </label>
         <label>
           <input
@@ -89,7 +99,7 @@ export default function SkinCareDiary() {
             checked={selectedStatus === "보통"}
             onChange={handleChange}
           />
-          보통🟡
+          <div>보통🟡</div>
         </label>
         <label>
           <input
@@ -99,7 +109,7 @@ export default function SkinCareDiary() {
             checked={selectedStatus === "나쁨"}
             onChange={handleChange}
           />
-          나쁨🔴
+          <div>나쁨🔴</div>
         </label>
       </div>
 
@@ -143,8 +153,19 @@ export default function SkinCareDiary() {
           type="text"
           value={value1}
           onChange={(e) => handleInputChange(e, setValue1)}
-          onFocus={(e) => handleFocus(e, "클렌징 제품")}
-          onBlur={(e) => handleBlur(e, setValue1, "클렌징 제품")}
+          onFocus={(e) =>
+            handleFocus(
+              e,
+              "클렌징 제품 (Ex. 엠퀴리 클렌징 오일, 독도 클렌징 폼)"
+            )
+          }
+          onBlur={(e) =>
+            handleBlur(
+              e,
+              setValue1,
+              "클렌징 제품 (Ex. 엠퀴리 클렌징 오일, 독도 클렌징 폼)"
+            )
+          }
         />
       </div>
       <div className={styles["write-SkinCareDiary-input-container"]}>
@@ -152,8 +173,19 @@ export default function SkinCareDiary() {
           type="text"
           value={value2}
           onChange={(e) => handleInputChange(e, setValue2)}
-          onFocus={(e) => handleFocus(e, "스킨케어 제품")}
-          onBlur={(e) => handleBlur(e, setValue2, "스킨케어 제품")}
+          onFocus={(e) =>
+            handleFocus(
+              e,
+              "스킨케어 제품 (Ex. 독도 토너, 에스네이처 스쿠알란크림)"
+            )
+          }
+          onBlur={(e) =>
+            handleBlur(
+              e,
+              setValue2,
+              "스킨케어 제품 (Ex. 독도 토너, 에스네이처 스쿠알란크림)"
+            )
+          }
         />
       </div>
       <div className={styles["write-SkinCareDiary-input-container"]}>
@@ -161,8 +193,10 @@ export default function SkinCareDiary() {
           type="text"
           value={value3}
           onChange={(e) => handleInputChange(e, setValue3)}
-          onFocus={(e) => handleFocus(e, "기타 제품")}
-          onBlur={(e) => handleBlur(e, setValue3, "기타 제품")}
+          onFocus={(e) => handleFocus(e, "기타 제품 (Ex. 브링그린 알로에 팩)")}
+          onBlur={(e) =>
+            handleBlur(e, setValue3, "기타 제품 (Ex. 브링그린 알로에 팩)")
+          }
         />
       </div>
 
@@ -193,8 +227,12 @@ export default function SkinCareDiary() {
           type="text"
           value={value4}
           onChange={(e) => handleInputChange(e, setValue4)}
-          onFocus={(e) => handleFocus(e, "운동 기록")}
-          onBlur={(e) => handleBlur(e, setValue4, "운동 기록")}
+          onFocus={(e) =>
+            handleFocus(e, "운동 기록 (Ex. 유산소 30분, 헬스 1시간)")
+          }
+          onBlur={(e) =>
+            handleBlur(e, setValue4, "운동 기록 (Ex. 유산소 30분, 헬스 1시간)")
+          }
         />
       </div>
       <div className={styles["write-SkinCareDiary-input-container"]}>
@@ -202,12 +240,16 @@ export default function SkinCareDiary() {
           type="text"
           value={value5}
           onChange={(e) => handleInputChange(e, setValue5)}
-          onFocus={(e) => handleFocus(e, "오늘 먹은 음식")}
-          onBlur={(e) => handleBlur(e, setValue5, "오늘 먹은 음식")}
+          onFocus={(e) =>
+            handleFocus(e, "오늘 먹은 음식 (Ex. 된장찌개, 돈까스)")
+          }
+          onBlur={(e) =>
+            handleBlur(e, setValue5, "오늘 먹은 음식 (Ex. 된장찌개, 돈까스)")
+          }
         />
       </div>
       {/* footer 패딩 */}
-      <div style={{ paddingTop: "10vh" }} />
+      <div style={{ paddingTop: "17vh" }} />
     </div>
   );
 }
