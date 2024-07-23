@@ -116,8 +116,9 @@ export default function SkinCareDiary() {
       {/* 오늘의 피부 일지 */}
       <div style={{ paddingTop: "5vh" }} />
       <QuestionTitle text="✏️ 피부일지를 작성해요!" />
-      <textarea className={styles["write-SkinCareDiary-textArea"]} />
-
+      <div className={styles["write-SkinCareDiary-textArea-container"]}>
+        <textarea className={styles["write-SkinCareDiary-textArea"]} />
+      </div>
       {/* 오늘의 피부 사진 */}
       <div style={{ paddingTop: "5vh" }} />
       <QuestionTitle text="📷 현재 피부를 사진으로 기록해봐요!" />
