@@ -1,186 +1,213 @@
 "use client";
 
-import React, { useState } from "react";
-import "./SkinCareDiary.scss";
+import React, { useState, ChangeEvent, FocusEvent } from "react";
+import styles from "@/styles/pages/write.module.scss";
+import QuestionTitle from "@/components/ui/QuestionTitle";
 
-// 초기 상태 정의
-const initialProductsState = {
-  cleansing: "",
-  skincare: "",
-  others: "",
-};
+export default function SkinCareDiary() {
+  const [selectedStatus, setSelectedStatus] = useState<string>("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string>("");
+  const [value1, setValue1] = useState<string>("클렌징 제품");
+  const [value2, setValue2] = useState<string>("스킨케어 제품");
+  const [value3, setValue3] = useState<string>("기타 제품");
+  const [value4, setValue4] = useState<string>("운동 기록");
+  const [value5, setValue5] = useState<string>("오늘 먹은 음식");
+  const [sleepHours, setSleepHours] = useState<number>(7); // State for sleep hours
 
-const SkinCareDiary: React.FC = () => {
-  const [date] = useState(new Date().toLocaleDateString());
-  const [skinCondition, setSkinCondition] = useState("");
-  const [diaryEntry, setDiaryEntry] = useState("");
-  const [skinPhoto, setSkinPhoto] = useState<File | null>(null);
-  const [products, setProducts] = useState(initialProductsState);
-  const [editMode, setEditMode] = useState({
-    cleansing: false,
-    skincare: false,
-    others: false,
-  });
-  const [lifestyle, setLifestyle] = useState({
-    sleep: 0,
-    exercise: "",
-    food: "",
-  });
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setSelectedStatus(value);
+    console.log(value);
+  };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setSkinPhoto(e.target.files[0]);
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0] || null;
+    setSelectedFile(file);
+
+    if (file) {
+      const fileUrl = URL.createObjectURL(file);
+      setPreviewUrl(fileUrl);
+    } else {
+      setPreviewUrl("");
     }
   };
 
-  const handleEditMode = (field: "cleansing" | "skincare" | "others") => {
-    setEditMode({ ...editMode, [field]: !editMode[field] });
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    setValue: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    setValue(event.target.value);
   };
 
-  const handleProductChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    field: "cleansing" | "skincare" | "others"
+  const handleFocus = (
+    event: FocusEvent<HTMLInputElement>,
+    defaultValue: string
   ) => {
-    setProducts({ ...products, [field]: e.target.value });
+    if (event.target.value === defaultValue) {
+      event.target.value = "";
+    }
   };
 
-  const handleLifestyleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-    field: "sleep" | "exercise" | "food"
+  const handleBlur = (
+    event: FocusEvent<HTMLInputElement>,
+    setValue: React.Dispatch<React.SetStateAction<string>>,
+    defaultValue: string
   ) => {
-    setLifestyle({ ...lifestyle, [field]: e.target.value });
+    if (event.target.value === "") {
+      setValue(defaultValue);
+    }
+  };
+
+  const handleSleepHoursChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSleepHours(Number(event.target.value));
   };
 
   return (
-    <main className="skin-care-diary-container">
-      <div className="skin-care-diary">
-        <h2>오늘 날짜: {date}</h2>
-        <div className="section">
-          <h3>오늘 피부상태</h3>
-          <div className="skin-condition">
-            <label>
-              <input
-                type="radio"
-                name="skinCondition"
-                value="좋음"
-                onChange={() => setSkinCondition("좋음")}
-              />{" "}
-              좋음
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="skinCondition"
-                value="보통"
-                onChange={() => setSkinCondition("보통")}
-              />{" "}
-              보통
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="skinCondition"
-                value="나쁨"
-                onChange={() => setSkinCondition("나쁨")}
-              />{" "}
-              나쁨
-            </label>
-          </div>
-          <div className="diary-entry">
-            <h4>피부 일지(기록)</h4>
-            <textarea
-              value={diaryEntry}
-              onChange={(e) => setDiaryEntry(e.target.value)}
-            />
-          </div>
-          <div className="photo-upload">
-            <h4>현재 피부 사진 업로드</h4>
-            <input type="file" onChange={handleFileChange} />
-          </div>
-        </div>
-        <div className="section">
-          <h3>현재 사용 제품</h3>
-          <div className="product">
-            <h4>클렌징 제품</h4>
-            {editMode.cleansing ? (
-              <input
-                type="text"
-                value={products.cleansing}
-                onChange={(e) => handleProductChange(e, "cleansing")}
-              />
-            ) : (
-              <p>{products.cleansing}</p>
-            )}
-            <button onClick={() => handleEditMode("cleansing")}>
-              {editMode.cleansing ? "저장" : "수정"}
-            </button>
-          </div>
-          <div className="product">
-            <h4>스킨케어 제품</h4>
-            {editMode.skincare ? (
-              <input
-                type="text"
-                value={products.skincare}
-                onChange={(e) => handleProductChange(e, "skincare")}
-              />
-            ) : (
-              <p>{products.skincare}</p>
-            )}
-            <button onClick={() => handleEditMode("skincare")}>
-              {editMode.skincare ? "저장" : "수정"}
-            </button>
-          </div>
-          <div className="product">
-            <h4>기타 제품</h4>
-            {editMode.others ? (
-              <input
-                type="text"
-                value={products.others}
-                onChange={(e) => handleProductChange(e, "others")}
-              />
-            ) : (
-              <p>{products.others}</p>
-            )}
-            <button onClick={() => handleEditMode("others")}>
-              {editMode.others ? "저장" : "수정"}
-            </button>
-          </div>
-        </div>
-        <div className="section">
-          <h3>생활습관</h3>
-          <div className="lifestyle">
-            <label>수면 시간: </label>
-            <select
-              value={lifestyle.sleep}
-              onChange={(e) => handleLifestyleChange(e, "sleep")}
-            >
-              {/* {[...Array(13).keys()].map((i) => (
-              <option key={i} value={i}>
-                {i}시간
-              </option>
-            ))} */}
-            </select>
-          </div>
-          <div className="lifestyle">
-            <label>운동: </label>
-            <input
-              type="text"
-              value={lifestyle.exercise}
-              onChange={(e) => handleLifestyleChange(e, "exercise")}
-            />
-          </div>
-          <div className="lifestyle">
-            <label>오늘 먹은 음식: </label>
-            <input
-              type="text"
-              value={lifestyle.food}
-              onChange={(e) => handleLifestyleChange(e, "food")}
-            />
-          </div>
-        </div>
+    <div className={styles["write-skinCareDiary-container"]}>
+      {/* 오늘의 피부 상태 */}
+      <div style={{ paddingTop: "15vh" }} />
+      <QuestionTitle text="😁 오늘의 상태는?" />
+      <div className={styles["write-SkinCareDiary-checkBox"]}>
+        <label>
+          <input
+            type="radio"
+            name="status"
+            value="좋음"
+            checked={selectedStatus === "좋음"}
+            onChange={handleChange}
+          />
+          좋음🟢
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="status"
+            value="보통"
+            checked={selectedStatus === "보통"}
+            onChange={handleChange}
+          />
+          보통🟡
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="status"
+            value="나쁨"
+            checked={selectedStatus === "나쁨"}
+            onChange={handleChange}
+          />
+          나쁨🔴
+        </label>
       </div>
-    </main>
-  );
-};
 
-export default SkinCareDiary;
+      {/* 오늘의 피부 일지 */}
+      <div style={{ paddingTop: "5vh" }} />
+      <QuestionTitle text="✏️ 피부일지를 작성해요!" />
+      <textarea className={styles["write-SkinCareDiary-textArea"]} />
+      <button className={styles["write-SkinCareDiary-textArea-btn"]}>
+        Save
+      </button>
+
+      {/* 오늘의 피부 사진 */}
+      <div style={{ paddingTop: "5vh" }} />
+      <QuestionTitle text="📷 현재 피부를 확인해봐요!" />
+      {previewUrl && (
+        <div className={styles["write-SkinCareDiary-photoPreview"]}>
+          <img
+            src={previewUrl}
+            alt="Preview"
+            className={styles["write-SkinCareDiary-photo-img"]}
+          />
+        </div>
+      )}
+      <div className={styles["write-SkinCareDiary-photoBtn-container"]}>
+        <label
+          className={styles["write-SkinCareDiary-photoBtn"]}
+          htmlFor="input-file"
+        >
+          업로드
+        </label>
+        <input
+          type="file"
+          id="input-file"
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
+      </div>
+
+      {/* 오늘의 사용 상품 */}
+      <div style={{ paddingTop: "5vh" }} />
+      <QuestionTitle text="🧴 현재 사용 제품은 무엇인가요?" />
+      <div className={styles["write-SkinCareDiary-input-container"]}>
+        <input
+          type="text"
+          value={value1}
+          onChange={(e) => handleInputChange(e, setValue1)}
+          onFocus={(e) => handleFocus(e, "클렌징 제품")}
+          onBlur={(e) => handleBlur(e, setValue1, "클렌징 제품")}
+        />
+        <button>저장</button>
+      </div>
+      <div className={styles["write-SkinCareDiary-input-container"]}>
+        <input
+          type="text"
+          value={value2}
+          onChange={(e) => handleInputChange(e, setValue2)}
+          onFocus={(e) => handleFocus(e, "스킨케어 제품")}
+          onBlur={(e) => handleBlur(e, setValue2, "스킨케어 제품")}
+        />
+        <button>저장</button>
+      </div>
+      <div className={styles["write-SkinCareDiary-input-container"]}>
+        <input
+          type="text"
+          value={value3}
+          onChange={(e) => handleInputChange(e, setValue3)}
+          onFocus={(e) => handleFocus(e, "기타 제품")}
+          onBlur={(e) => handleBlur(e, setValue3, "기타 제품")}
+        />
+        <button>저장</button>
+      </div>
+
+      {/* 오늘의 생활습관 */}
+      <div style={{ paddingTop: "5vh" }} />
+      <QuestionTitle text="🌗 생활습관을 기록해요!" />
+
+      {/* 수면시간 드롭다운 */}
+      <div className={styles["write-SkinCareDiary-sleep-container"]}>
+        <div>수면 시간</div>
+        <select value={sleepHours} onChange={handleSleepHoursChange}>
+          {Array.from({ length: 24 }, (_, i) => i + 1).map((hour) => (
+            <option key={hour} value={hour}>
+              {hour} 시간
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className={styles["write-SkinCareDiary-input-container"]}>
+        <input
+          type="text"
+          value={value4}
+          onChange={(e) => handleInputChange(e, setValue4)}
+          onFocus={(e) => handleFocus(e, "운동 기록")}
+          onBlur={(e) => handleBlur(e, setValue4, "운동 기록")}
+        />
+        <button>저장</button>
+      </div>
+      <div className={styles["write-SkinCareDiary-input-container"]}>
+        <input
+          type="text"
+          value={value5}
+          onChange={(e) => handleInputChange(e, setValue5)}
+          onFocus={(e) => handleFocus(e, "오늘 먹은 음식")}
+          onBlur={(e) => handleBlur(e, setValue5, "오늘 먹은 음식")}
+        />
+        <button>저장</button>
+      </div>
+      {/* footer 패딩 */}
+      <div style={{ paddingTop: "10vh" }} />
+    </div>
+  );
+}
