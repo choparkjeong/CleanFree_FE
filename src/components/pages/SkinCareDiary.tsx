@@ -13,7 +13,7 @@ export default function SkinCareDiary() {
   const [value3, setValue3] = useState<string>("기타 제품");
   const [value4, setValue4] = useState<string>("운동 기록");
   const [value5, setValue5] = useState<string>("오늘 먹은 음식");
-  const [sleepHours, setSleepHours] = useState<number>(7); // State for sleep hours
+  const [sleepHours, setSleepHours] = useState<number | null>(null); // 초기값을 null로 설정
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -63,11 +63,13 @@ export default function SkinCareDiary() {
     setSleepHours(Number(event.target.value));
   };
 
+  console.log(sleepHours);
+
   return (
     <div className={styles["write-skinCareDiary-container"]}>
       {/* 오늘의 피부 상태 */}
       <div style={{ paddingTop: "15vh" }} />
-      <QuestionTitle text="😁 오늘의 상태는?" />
+      <QuestionTitle text="😁 오늘의 피부 상태는?" />
       <div className={styles["write-SkinCareDiary-checkBox"]}>
         <label>
           <input
@@ -105,13 +107,10 @@ export default function SkinCareDiary() {
       <div style={{ paddingTop: "5vh" }} />
       <QuestionTitle text="✏️ 피부일지를 작성해요!" />
       <textarea className={styles["write-SkinCareDiary-textArea"]} />
-      <button className={styles["write-SkinCareDiary-textArea-btn"]}>
-        Save
-      </button>
 
       {/* 오늘의 피부 사진 */}
       <div style={{ paddingTop: "5vh" }} />
-      <QuestionTitle text="📷 현재 피부를 확인해봐요!" />
+      <QuestionTitle text="📷 현재 피부를 사진으로 기록해봐요!" />
       {previewUrl && (
         <div className={styles["write-SkinCareDiary-photoPreview"]}>
           <img
@@ -147,7 +146,6 @@ export default function SkinCareDiary() {
           onFocus={(e) => handleFocus(e, "클렌징 제품")}
           onBlur={(e) => handleBlur(e, setValue1, "클렌징 제품")}
         />
-        <button>저장</button>
       </div>
       <div className={styles["write-SkinCareDiary-input-container"]}>
         <input
@@ -157,7 +155,6 @@ export default function SkinCareDiary() {
           onFocus={(e) => handleFocus(e, "스킨케어 제품")}
           onBlur={(e) => handleBlur(e, setValue2, "스킨케어 제품")}
         />
-        <button>저장</button>
       </div>
       <div className={styles["write-SkinCareDiary-input-container"]}>
         <input
@@ -167,7 +164,6 @@ export default function SkinCareDiary() {
           onFocus={(e) => handleFocus(e, "기타 제품")}
           onBlur={(e) => handleBlur(e, setValue3, "기타 제품")}
         />
-        <button>저장</button>
       </div>
 
       {/* 오늘의 생활습관 */}
@@ -176,8 +172,14 @@ export default function SkinCareDiary() {
 
       {/* 수면시간 드롭다운 */}
       <div className={styles["write-SkinCareDiary-sleep-container"]}>
-        <div>수면 시간</div>
-        <select value={sleepHours} onChange={handleSleepHoursChange}>
+        <select
+          value={sleepHours === null ? "" : sleepHours}
+          onChange={handleSleepHoursChange}
+        >
+          <option value="" disabled>
+            수면 시간
+          </option>{" "}
+          {/* 기본 옵션 */}
           {Array.from({ length: 24 }, (_, i) => i + 1).map((hour) => (
             <option key={hour} value={hour}>
               {hour} 시간
@@ -194,7 +196,6 @@ export default function SkinCareDiary() {
           onFocus={(e) => handleFocus(e, "운동 기록")}
           onBlur={(e) => handleBlur(e, setValue4, "운동 기록")}
         />
-        <button>저장</button>
       </div>
       <div className={styles["write-SkinCareDiary-input-container"]}>
         <input
@@ -204,7 +205,6 @@ export default function SkinCareDiary() {
           onFocus={(e) => handleFocus(e, "오늘 먹은 음식")}
           onBlur={(e) => handleBlur(e, setValue5, "오늘 먹은 음식")}
         />
-        <button>저장</button>
       </div>
       {/* footer 패딩 */}
       <div style={{ paddingTop: "10vh" }} />
