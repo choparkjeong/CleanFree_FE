@@ -19,8 +19,31 @@
   justify-content: space-between;
   align-items: center;
   height: 10vh;
-  padding-left: 28%; //8%
-  padding-right: 28%; //8%
+  padding-left: 18%;
+  padding-right: 18%;
+}
+
+.navBar-iconWithText-container {
+  width: 110px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  // background-color: red;
+}
+
+.navBar-iconWithText-container-text1 {
+  font-size: 11px;
+  font-weight: 800;
+  color: rgb(136, 130, 255);
+}
+
+.navBar-iconWithText-container-text2 {
+  font-size: 11px;
+  font-weight: 800;
+  color: #e3e3e3;
 }
 
 //글작성 관련 헤더
