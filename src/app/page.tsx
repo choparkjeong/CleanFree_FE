@@ -33,16 +33,17 @@ export default function Home() {
       <div className={styles["splashScreen"]}>
         <img className={styles["splashContent"]} src="/icons/MainLogo.png" />
       </div>
+      // <></>
     );
   }
 
-  if (showSplash) {
-    return (
-      <div className={styles["splashScreen"]}>
-        <img className={styles["splashContent"]} src="/icons/MainLogo.png" />
-      </div>
-    );
-  }
+  // if (showSplash) {
+  //   return (
+  //     <div className={styles["splashScreen"]}>
+  //       <img className={styles["splashContent"]} src="/icons/MainLogo.png" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
