@@ -9,6 +9,7 @@ import CalendarStatus from "@/components/ui/CalendarStatus";
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(false);
+  const [render, setRender] = useState(false); // 기본은 true => 스플래시 활성화
 
   useEffect(() => {
     const hasSeenSplash = sessionStorage.getItem("hasSeenSplash");
@@ -22,9 +23,13 @@ export default function Home() {
 
       return () => clearTimeout(timer);
     }
+
+    if (hasSeenSplash) {
+      setRender(true);
+    }
   }, []);
 
-  if (showSplash) {
+  if (showSplash && !render) {
     return (
       <div className={styles["splashScreen"]}>
         <img className={styles["splashContent"]} src="/icons/MainLogo.png" />
@@ -32,7 +37,7 @@ export default function Home() {
     );
   }
 
-  if (!showSplash) {
+  if (!showSplash && render) {
     return (
       <>
         <Header />
