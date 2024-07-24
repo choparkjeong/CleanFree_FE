@@ -3,19 +3,7 @@
 import React from "react";
 import styles from "@/styles/layout/slider.module.scss";
 
-const fruits = [
-  "사과",
-  "바나나",
-  "오렌지",
-  "포도",
-  "딸기",
-  "키위",
-  "복숭아",
-  "파인애플",
-  "망고",
-  "수박",
-  "망고",
-];
+const fruits = ["네이버 블로그", "인스타", "네이버카페", "유튜브"];
 
 export default function Slider() {
   return (

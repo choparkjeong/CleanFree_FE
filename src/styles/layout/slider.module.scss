@@ -1,6 +1,9 @@
 .slider-container {
   overflow: hidden;
   width: 100%;
+  height: fit-content;
+  background-color: blue;
+  background: linear-gradient(to top, rgb(247, 247, 247) 50%, #8bdd9c 50%);
 }
 
 .slider {
@@ -8,25 +11,24 @@
   overflow-x: auto;
   white-space: nowrap;
   scroll-behavior: smooth;
-  // background-color: red;
   padding-left: 4%;
-  padding-top: 3%;
 }
 
 .slide {
   display: inline-block;
-  // padding: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 
-  margin-right: 10px;
-  // background-color: #f0f0f0;
-  border: 1px solid rgba(136, 130, 255, 0.246);
-  border-radius: 999px;
-  text-align: center;
-  font-size: 16px;
+  margin-right: 15px;
+  // // background-color: #f0f0f0;
+  // border: 1px solid rgba(136, 130, 255, 0.246);
+  // border-radius: 999px;
+  // text-align: center;
+  // font-size: 16px;
 }
 
 .slider::-webkit-scrollbar {

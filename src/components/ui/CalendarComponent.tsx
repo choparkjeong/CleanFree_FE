@@ -17,6 +17,9 @@ export default function CalendarComponent() {
     console.log("Selected date:", value);
     router.push(`/write/${value}`);
   };
+  const handleActiveStartDateChange = ({ activeStartDate }: any) => {
+    console.log("Active start date changed to:", activeStartDate);
+  };
 
   // 특정 날짜에 따라 다른 CSS 클래스를 적용하는 함수
   const tileClassName = ({ date }: { date: Date }) => {
@@ -48,6 +51,7 @@ export default function CalendarComponent() {
         formatDay={(locale, date) => moment(date).format("D")}
         showNeighboringMonth={false}
         tileClassName={tileClassName}
+        onActiveStartDateChange={handleActiveStartDateChange}
       />
     </div>
   );

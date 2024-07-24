@@ -46,6 +46,7 @@ export default function Scroll() {
           <div className={styles["detail-scroll-element-cover-date"]}>
             2024.07.18
           </div>
+
           <img
             className={styles["detail-scroll-element-cover-img"]}
             src="/dummy/thumnail.png"

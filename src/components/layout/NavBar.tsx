@@ -17,7 +17,7 @@ export default function NavBar() {
 
           {pathName === "/" ? (
             <>
-              <GoHomeFill size={35} color="rgb(136, 130, 255)" />
+              <GoHomeFill size={35} color="#8bdd9c" />
               <div className={styles["navBar-iconWithText-container-text1"]}>
                 HOME
               </div>
@@ -39,7 +39,7 @@ export default function NavBar() {
 
           {pathName === "/detail" ? (
             <>
-              <FaThList size={35} color="rgb(136, 130, 255)" />
+              <FaThList size={35} color="#8bdd9c" />
               <div className={styles["navBar-iconWithText-container-text1"]}>
                 BOARD
               </div>
