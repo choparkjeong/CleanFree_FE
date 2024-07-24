@@ -1,85 +1,76 @@
 "use client";
 
 import React from "react";
-import styles from "@/styles/pages/detail.module.scss";
+import styles from "@/styles/pages/main.module.scss";
 import Link from "next/link";
 
+interface Post {
+  id: number;
+  image: string;
+  title: string;
+  content: string;
+}
+
+const posts: Post[] = [
+  {
+    id: 1,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-26",
+    content: "좋음",
+  },
+  {
+    id: 2,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-25",
+    content: "보통",
+  },
+  {
+    id: 3,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-24",
+    content: "나쁨",
+  },
+  {
+    id: 4,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-23",
+    content: "좋음",
+  },
+  {
+    id: 5,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-22",
+    content: "좋음",
+  },
+  {
+    id: 6,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-21",
+    content: "좋음",
+  },
+];
+
 export default function Scroll() {
-  function truncateText(text: string, maxLength: number): string {
-    if (text.length <= maxLength) {
-      return text;
-    }
-    return text.substring(0, maxLength) + "...";
-  }
-
-  const longText =
-    "안녕하세요. 피부 여드름, 피부 흉터로 인해 스트레스를 받는 사람들을 위한 카페장 클린프리입니다. 클린프리는 Clean (깔끔한) Free (자유로운, ~ 없는)이라는 두 가지의 뜻을 가진 단어로 만들어졌습니다.";
-
   return (
-    <>
-      <Link
-        href="https://m.blog.naver.com/zerotoone_1/223517300425"
-        className={styles["detail-scroll-element"]}
-      >
-        <div className={styles["detail-scroll-element-cover"]}>
-          <div className={styles["detail-scroll-element-cover-date"]}>
-            2024.07.18
+    <div className={styles["scroll-container"]}>
+      {posts.map((post) => (
+        <div key={post.id} className={styles["post"]}>
+          <img src={post.image} />
+          <div className={styles["title-layout"]}>
+            <h2>1일전</h2>
+            <h4>{post.title}</h4>
           </div>
-          <img
-            className={styles["detail-scroll-element-cover-img"]}
-            src="/dummy/thumnail.png"
-          ></img>
-          <div className={styles["detail-scroll-element-cover-title"]}>
-            클린프리가 피부 여드름, 피부 흉터 문제를 가장 잘 풀수밖에 없는 이유
-          </div>
-          <div className={styles["detail-scroll-element-cover-content"]}>
-            {truncateText(longText, 60)}
-          </div>
+          {post.content === "좋음" && (
+            <div className={styles["status1"]}>피부가 좋았어요!</div>
+          )}
+          {post.content === "보통" && (
+            <div className={styles["status2"]}>무난한 날이에요</div>
+          )}
+          {post.content === "나쁨" && (
+            <div className={styles["status3"]}>고민좀 해볼까요?</div>
+          )}
         </div>
-      </Link>
-
-      <Link
-        href="https://m.blog.naver.com/zerotoone_1/223517300425"
-        className={styles["detail-scroll-element"]}
-      >
-        <div className={styles["detail-scroll-element-cover"]}>
-          <div className={styles["detail-scroll-element-cover-date"]}>
-            2024.07.18
-          </div>
-
-          <img
-            className={styles["detail-scroll-element-cover-img"]}
-            src="/dummy/thumnail.png"
-          ></img>
-          <div className={styles["detail-scroll-element-cover-title"]}>
-            클린프리가 피부 여드름, 피부 흉터 문제를 가장 잘 풀수밖에 없는 이유
-          </div>
-          <div className={styles["detail-scroll-element-cover-content"]}>
-            {truncateText(longText, 60)}
-          </div>
-        </div>
-      </Link>
-
-      <Link
-        href="https://m.blog.naver.com/zerotoone_1/223517300425"
-        className={styles["detail-scroll-element"]}
-      >
-        <div className={styles["detail-scroll-element-cover"]}>
-          <div className={styles["detail-scroll-element-cover-date"]}>
-            2024.07.18
-          </div>
-          <img
-            className={styles["detail-scroll-element-cover-img"]}
-            src="/dummy/thumnail.png"
-          ></img>
-          <div className={styles["detail-scroll-element-cover-title"]}>
-            클린프리가 피부 여드름, 피부 흉터 문제를 가장 잘 풀수밖에 없는 이유
-          </div>
-          <div className={styles["detail-scroll-element-cover-content"]}>
-            {truncateText(longText, 60)}
-          </div>
-        </div>
-      </Link>
-    </>
+      ))}
+    </div>
   );
 }

@@ -7,6 +7,8 @@ import Header from "@/components/layout/Header";
 import NavBar from "@/components/layout/NavBar";
 import CalendarStatus from "@/components/ui/CalendarStatus";
 import Slider from "@/components/layout/Slider";
+import Scroll from "@/components/pages/Scroll";
+import MainTitle from "@/components/ui/MainTitle";
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(false);
@@ -46,6 +48,8 @@ export default function Home() {
       <main className={styles["main-container"]}>
         {/* <CalendarComponent />
         <CalendarStatus /> */}
+        <MainTitle />
+        <Scroll />
       </main>
       <NavBar />
     </>
