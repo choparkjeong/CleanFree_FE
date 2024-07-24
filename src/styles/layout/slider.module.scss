@@ -15,22 +15,52 @@
 }
 
 .slide {
-  display: inline-block;
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-
-  margin-right: 15px;
-  // // background-color: #f0f0f0;
-  // border: 1px solid rgba(136, 130, 255, 0.246);
-  // border-radius: 999px;
-  // text-align: center;
-  // font-size: 16px;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 7px;
 }
 
 .slider::-webkit-scrollbar {
   display: none;
+}
+
+.slider-container-e1 {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slider-container-layout {
+  display: flex;
+  justify-content: space-between;
+  width: 76.5vw;
+}
+
+.slider-container-e1-t2 {
+  font-size: 11px;
+  color: grey;
+}
+
+.slider-container-e2 {
+  background-color: rgb(29, 193, 204);
+  height: 72px;
+}
+
+.text-small {
+  font-size: 13px;
+}
+
+.text-medium {
+  font-size: 18px;
+  display: flex;
+}
+
+.text-bold {
+  font-weight: bold;
+  margin-left: 5px;
 }

@@ -12,7 +12,7 @@ export default function Header() {
           <div>클린프리</div>와 함께
         </div>
         <div className={styles["header-element-title2"]}>
-          피부 일지를 기록해보세요!🎯
+          피부 일지를 기록해보세요! 🎯
         </div>
       </div>
     </div>
