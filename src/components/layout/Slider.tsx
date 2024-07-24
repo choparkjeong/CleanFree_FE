@@ -9,28 +9,28 @@ const sliderData = [
     textMedium: "꿀팁 대방출",
     textBold: "블로그",
     linkText: "지금 보러가기 →",
-    image: "사진",
+    image: "/banner/banner1.png",
   },
   {
     textSmall: "클린프리 더 알아보기!",
     textMedium: "소통해요",
     textBold: "인스타",
     linkText: "지금 보러가기 →",
-    image: "사진",
+    image: "/banner/banner2.png",
   },
   {
     textSmall: "커뮤티니를 이뤄요!",
     textMedium: "함께하자",
     textBold: "카페",
     linkText: "지금 보러가기 →",
-    image: "사진",
+    image: "/banner/banner3.png",
   },
   {
     textSmall: "영상으로 볼까요?",
     textMedium: "클린프리",
     textBold: "유튜브",
     linkText: "지금 보러가기 →",
-    image: "사진",
+    image: "/banner/banner4.png",
   },
 ];
 
@@ -53,7 +53,9 @@ export default function Slider() {
                   {slide.linkText}
                 </div>
               </div>
-              <div className={styles["slider-container-e2"]}>{slide.image}</div>
+              <div className={styles["slider-container-e2"]}>
+                <img src={slide.image} />
+              </div>
             </div>
           </div>
         ))}
