@@ -5,6 +5,7 @@ import { GoHomeFill } from "react-icons/go";
 import { FaThList } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaPencil } from "react-icons/fa6";
 
 export default function NavBar() {
   const pathName = usePathname();
@@ -32,23 +33,23 @@ export default function NavBar() {
           )}
         </Link>
         <Link
-          href={"/detail"}
+          href={"/write"}
           className={styles["navBar-iconWithText-container"]}
         >
           {/* <GoHomeFill size={35} color="black" /> */}
 
-          {pathName === "/detail" ? (
+          {pathName === "/write" ? (
             <>
-              <FaThList size={35} color="#8bdd9c" />
+              <FaPencil size={35} color="#8bdd9c" />
               <div className={styles["navBar-iconWithText-container-text1"]}>
-                BOARD
+                WRITE
               </div>
             </>
           ) : (
             <>
-              <FaThList size={35} color="#e3e3e3" />
+              <FaPencil size={35} color="#e3e3e3" />
               <div className={styles["navBar-iconWithText-container-text2"]}>
-                BOARD
+                WRITE
               </div>
             </>
           )}

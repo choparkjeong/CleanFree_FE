@@ -11,19 +11,11 @@ export default function SkinCareDiary() {
   const [value1, setValue1] = useState<string>(
     "클렌징 제품 (Ex. 엠퀴리 클렌징 오일, 독도 클렌징 폼)"
   );
-  const [value2, setValue2] = useState<string>(
-    "스킨케어 제품 (Ex. 독도 토너, 에스네이처 스쿠알란크림)"
-  );
-  const [value3, setValue3] = useState<string>(
-    "기타 제품 (Ex. 브링그린 알로에 팩)"
-  );
-  const [value4, setValue4] = useState<string>(
-    "운동 기록 (Ex. 유산소 30분, 헬스 1시간)"
-  );
-  const [value5, setValue5] = useState<string>(
-    "오늘 먹은 음식 (Ex. 된장찌개, 돈까스)"
-  );
-  const [sleepHours, setSleepHours] = useState<number | null>(null); // 초기값을 null로 설정
+  const [sleepHours, setSleepHours] = useState<number | null>(null);
+  const [isAlcoholConsumed, setIsAlcoholConsumed] = useState<boolean>(false);
+  const [isExercised, setIsExercised] = useState<boolean>(false);
+  const [product, setProduct] = useState<string>("");
+  const [products, setProducts] = useState<string[]>([]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -73,7 +65,28 @@ export default function SkinCareDiary() {
     setSleepHours(Number(event.target.value));
   };
 
-  console.log(sleepHours);
+  const toggleAlcoholConsumption = () => {
+    setIsAlcoholConsumed((prev) => !prev);
+  };
+
+  const toggleExerciseStatus = () => {
+    setIsExercised((prev) => !prev);
+  };
+
+  const handleProductChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setProduct(event.target.value);
+  };
+
+  const addProduct = () => {
+    if (product.trim() !== "") {
+      setProducts((prevProducts) => [...prevProducts, product.trim()]);
+      setProduct(""); // Clear the input field
+    }
+  };
+
+  const removeProduct = (index: number) => {
+    setProducts((prevProducts) => prevProducts.filter((_, i) => i !== index));
+  };
 
   return (
     <div className={styles["write-skinCareDiary-container"]}>
@@ -113,12 +126,6 @@ export default function SkinCareDiary() {
         </label>
       </div>
 
-      {/* 오늘의 피부 일지 */}
-      <div style={{ paddingTop: "5vh" }} />
-      <QuestionTitle text="✏️ 피부일지를 작성해요!" />
-      <div className={styles["write-SkinCareDiary-textArea-container"]}>
-        <textarea className={styles["write-SkinCareDiary-textArea"]} />
-      </div>
       {/* 오늘의 피부 사진 */}
       <div style={{ paddingTop: "5vh" }} />
       <QuestionTitle text="📷 현재 피부를 사진으로 기록해봐요!" />
@@ -152,53 +159,23 @@ export default function SkinCareDiary() {
       <div className={styles["write-SkinCareDiary-input-container"]}>
         <input
           type="text"
-          value={value1}
-          onChange={(e) => handleInputChange(e, setValue1)}
-          onFocus={(e) =>
-            handleFocus(
-              e,
-              "클렌징 제품 (Ex. 엠퀴리 클렌징 오일, 독도 클렌징 폼)"
-            )
-          }
-          onBlur={(e) =>
-            handleBlur(
-              e,
-              setValue1,
-              "클렌징 제품 (Ex. 엠퀴리 클렌징 오일, 독도 클렌징 폼)"
-            )
-          }
+          value={product}
+          onChange={handleProductChange}
+          placeholder="제품명을 입력해주세요"
         />
+        <button onClick={addProduct}>추가</button>
       </div>
-      <div className={styles["write-SkinCareDiary-input-container"]}>
-        <input
-          type="text"
-          value={value2}
-          onChange={(e) => handleInputChange(e, setValue2)}
-          onFocus={(e) =>
-            handleFocus(
-              e,
-              "스킨케어 제품 (Ex. 독도 토너, 에스네이처 스쿠알란크림)"
-            )
-          }
-          onBlur={(e) =>
-            handleBlur(
-              e,
-              setValue2,
-              "스킨케어 제품 (Ex. 독도 토너, 에스네이처 스쿠알란크림)"
-            )
-          }
-        />
-      </div>
-      <div className={styles["write-SkinCareDiary-input-container"]}>
-        <input
-          type="text"
-          value={value3}
-          onChange={(e) => handleInputChange(e, setValue3)}
-          onFocus={(e) => handleFocus(e, "기타 제품 (Ex. 브링그린 알로에 팩)")}
-          onBlur={(e) =>
-            handleBlur(e, setValue3, "기타 제품 (Ex. 브링그린 알로에 팩)")
-          }
-        />
+      <div className={styles["write-SkinCareDiary-products-container"]}>
+        {products.map((item, index) => (
+          <div
+            key={index}
+            className={styles["product-tag"]}
+            onClick={() => removeProduct(index)}
+          >
+            <div>{item}</div>
+            <div className={styles["product-tag-delete"]}>X</div>
+          </div>
+        ))}
       </div>
 
       {/* 오늘의 생활습관 */}
@@ -213,8 +190,7 @@ export default function SkinCareDiary() {
         >
           <option value="" disabled>
             수면 시간
-          </option>{" "}
-          {/* 기본 옵션 */}
+          </option>
           {Array.from({ length: 24 }, (_, i) => i + 1).map((hour) => (
             <option key={hour} value={hour}>
               {hour} 시간
@@ -223,32 +199,33 @@ export default function SkinCareDiary() {
         </select>
       </div>
 
-      <div className={styles["write-SkinCareDiary-input-container"]}>
-        <input
-          type="text"
-          value={value4}
-          onChange={(e) => handleInputChange(e, setValue4)}
-          onFocus={(e) =>
-            handleFocus(e, "운동 기록 (Ex. 유산소 30분, 헬스 1시간)")
-          }
-          onBlur={(e) =>
-            handleBlur(e, setValue4, "운동 기록 (Ex. 유산소 30분, 헬스 1시간)")
-          }
-        />
+      {/* 음주 여부 및 운동 여부 */}
+      <div className={styles["write-SkinCareDiary-lifestyle-container"]}>
+        <button
+          className={`${styles["write-SkinCareDiary-toggleButton"]} ${
+            isAlcoholConsumed ? styles.active : ""
+          } ${isAlcoholConsumed ? styles.redBorder : ""}`}
+          onClick={toggleAlcoholConsumption}
+        >
+          {isAlcoholConsumed ? "🍺음주 O" : "어제 술을 마셨으면 클릭해주세요!"}
+        </button>
+        <button
+          className={`${styles["write-SkinCareDiary-toggleButton"]} ${
+            isExercised ? styles.active : ""
+          } ${isExercised ? styles.redBorder : ""}`}
+          onClick={toggleExerciseStatus}
+        >
+          {isExercised ? "👟운동 O" : "운동하셨다면 클릭해주세요!"}
+        </button>
       </div>
-      <div className={styles["write-SkinCareDiary-input-container"]}>
-        <input
-          type="text"
-          value={value5}
-          onChange={(e) => handleInputChange(e, setValue5)}
-          onFocus={(e) =>
-            handleFocus(e, "오늘 먹은 음식 (Ex. 된장찌개, 돈까스)")
-          }
-          onBlur={(e) =>
-            handleBlur(e, setValue5, "오늘 먹은 음식 (Ex. 된장찌개, 돈까스)")
-          }
-        />
+
+      {/* 오늘의 피부 일지 */}
+      <div style={{ paddingTop: "5vh" }} />
+      <QuestionTitle text="✏️ 기타 메모" />
+      <div className={styles["write-SkinCareDiary-textArea-container"]}>
+        <textarea className={styles["write-SkinCareDiary-textArea"]} />
       </div>
+
       {/* footer 패딩 */}
       <div style={{ paddingTop: "17vh" }} />
     </div>
