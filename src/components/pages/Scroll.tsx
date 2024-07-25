@@ -48,13 +48,41 @@ const posts: Post[] = [
     title: "2024-07-21",
     content: "좋음",
   },
+  {
+    id: 7,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-20",
+    content: "좋음",
+  },
+  {
+    id: 8,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-19",
+    content: "좋음",
+  },
+  {
+    id: 7,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-18",
+    content: "좋음",
+  },
+  {
+    id: 8,
+    image: "/dummy/iuprofile.jpg",
+    title: "2024-07-17",
+    content: "좋음",
+  },
 ];
 
 export default function Scroll() {
   return (
     <div className={styles["scroll-container"]}>
       {posts.map((post) => (
-        <div key={post.id} className={styles["post"]}>
+        <Link
+          href={`/i/flow/detail/${post.id}`}
+          key={post.id}
+          className={styles["post"]}
+        >
           <img src={post.image} />
           <div className={styles["title-layout"]}>
             <h2>1일전</h2>
@@ -69,7 +97,7 @@ export default function Scroll() {
           {post.content === "나쁨" && (
             <div className={styles["status3"]}>고민좀 해볼까요?</div>
           )}
-        </div>
+        </Link>
       ))}
     </div>
   );
