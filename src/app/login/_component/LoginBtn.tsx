@@ -8,7 +8,7 @@ export default function LoginBtn() {
   const onClickKaKaoSignIn = async () => {
     await signIn("kakao", {
       redirect: true,
-      callbackUrl: "/valid",
+      callbackUrl: "/",
     });
   };
 

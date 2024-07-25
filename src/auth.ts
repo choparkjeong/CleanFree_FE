@@ -32,8 +32,7 @@ export const {
 
       return { ...session, ...token };
     },
-    async signIn({ user, account }) {
-      console.log(account, "입니다");
+    async signIn({ account }) {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/auth/login`,
@@ -47,18 +46,18 @@ export const {
             }),
           }
         );
+        console.log(res.status);
         const data = await res.json();
         console.log(data);
-        if (data.statusCodeValue === 200) {
+        if (data.success === true) {
           const authorization: any = res.headers.get("authorization");
-          const uuid: any = res.headers.get("uuid");
           cookies().set("authorization", authorization);
-          cookies().set("uuid", uuid);
           return true;
         } else {
           throw data.message;
         }
       } catch (error) {
+        console.log(error);
         return true;
       }
     },
