@@ -78,7 +78,7 @@
 }
 
 .write-SkinCareDiary-input-container input {
-  height: 4vh;
+  height: 5vh;
   display: flex;
   outline: none;
   border-radius: 5px 0px 0px 5px;
@@ -87,17 +87,18 @@
   border: 1px solid #adadad;
   font-size: 11px;
   width: 85%;
+  box-sizing: border-box;
 }
 
 .write-SkinCareDiary-input-container button {
-  height: 4.45vh;
+  height: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
   border-radius: 0px 5px 5px 0px;
   width: 100%;
-  border: 1px solid #adadad;
+  border: 1px solid #8bdd9c;
   font-size: 11px;
   width: 15%;
   background-color: #8bdd9c;
@@ -131,6 +132,7 @@
   display: flex;
   font-size: 15px;
   justify-content: space-between;
+  margin-top: 1vh;
 }
 
 .write-SkinCareDiary-sleep-container select {
@@ -144,10 +146,9 @@
   border-radius: 5px;
   text-align: center;
   font-size: 11px;
-  padding-left: 2vh;
 }
 
-.write-SkinCareDiary-toggleButton {
+.write-SkinCareDiary-toggleButton1 {
   height: 5vh;
   border: 1px solid #adadad;
   cursor: pointer;
@@ -155,16 +156,37 @@
   color: #333;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  margin-top: 2vh;
   width: 100%;
   font-size: 11px;
 }
 
-.write-SkinCareDiary-toggleButton.active {
+.write-SkinCareDiary-toggleButton2 {
+  height: 5vh;
+  border: 1px solid #adadad;
+  cursor: pointer;
+  background-color: white;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  width: 100%;
+  font-size: 11px;
+  margin-top: 1vh;
+}
+
+.write-SkinCareDiary-toggleButton1.active {
   background-color: #8bdd9c;
   color: white;
 }
 
-.write-SkinCareDiary-toggleButton.redBorder {
+.write-SkinCareDiary-toggleButton1.redBorder {
+  border-color: #8bdd9c;
+}
+
+.write-SkinCareDiary-toggleButton2.active {
+  background-color: #8bdd9c;
+  color: white;
+}
+
+.write-SkinCareDiary-toggleButton2.redBorder {
   border-color: #8bdd9c;
 }

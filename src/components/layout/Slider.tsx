@@ -2,6 +2,7 @@
 
 import React from "react";
 import styles from "@/styles/layout/slider.module.scss";
+import Link from "next/link";
 
 const sliderData = [
   {
@@ -10,6 +11,7 @@ const sliderData = [
     textBold: "블로그",
     linkText: "지금 보러가기 →",
     image: "/banner/banner1.png",
+    url: "https://blog.naver.com/zerotoone_1",
   },
   {
     textSmall: "클린프리 더 알아보기!",
@@ -17,6 +19,7 @@ const sliderData = [
     textBold: "인스타",
     linkText: "지금 보러가기 →",
     image: "/banner/banner2.png",
+    url: "https://www.instagram.com/cleanfree_/",
   },
   {
     textSmall: "커뮤티니를 이뤄요!",
@@ -24,6 +27,7 @@ const sliderData = [
     textBold: "카페",
     linkText: "지금 보러가기 →",
     image: "/banner/banner3.png",
+    url: "https://cafe.naver.com/cleanfree",
   },
   {
     textSmall: "영상으로 볼까요?",
@@ -31,6 +35,7 @@ const sliderData = [
     textBold: "유튜브",
     linkText: "지금 보러가기 →",
     image: "/banner/banner4.png",
+    url: "https://youtube.com/channel/UCw2DFGtxYINwpL-haXRXoag?si=cEFjffLk19_kA_9_",
   },
 ];
 
@@ -39,7 +44,7 @@ export default function Slider() {
     <div className={styles["slider-container"]}>
       <div className={styles.slider}>
         {sliderData.map((slide, index) => (
-          <div key={index} className={styles.slide}>
+          <Link href={slide.url} key={index} className={styles.slide}>
             <div className={styles["slider-container-layout"]}>
               <div className={styles["slider-container-e1"]}>
                 <div className={styles["slider-container-e1-t1"]}>
@@ -57,7 +62,7 @@ export default function Slider() {
                 <img src={slide.image} />
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

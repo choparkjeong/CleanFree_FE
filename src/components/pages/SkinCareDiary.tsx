@@ -182,6 +182,26 @@ export default function SkinCareDiary() {
       <div style={{ paddingTop: "5vh" }} />
       <QuestionTitle text="🌗 생활습관을 기록해요!" />
 
+      {/* 음주 여부 및 운동 여부 */}
+      <div className={styles["write-SkinCareDiary-lifestyle-container"]}>
+        <button
+          className={`${styles["write-SkinCareDiary-toggleButton1"]} ${
+            isAlcoholConsumed ? styles.active : ""
+          } ${isAlcoholConsumed ? styles.redBorder : ""}`}
+          onClick={toggleAlcoholConsumption}
+        >
+          {isAlcoholConsumed ? "🍺음주 O" : "어제 술을 마셨으면 클릭해주세요!"}
+        </button>
+        <button
+          className={`${styles["write-SkinCareDiary-toggleButton2"]} ${
+            isExercised ? styles.active : ""
+          } ${isExercised ? styles.redBorder : ""}`}
+          onClick={toggleExerciseStatus}
+        >
+          {isExercised ? "👟운동 O" : "운동하셨다면 클릭해주세요!"}
+        </button>
+      </div>
+
       {/* 수면시간 드롭다운 */}
       <div className={styles["write-SkinCareDiary-sleep-container"]}>
         <select
@@ -197,26 +217,6 @@ export default function SkinCareDiary() {
             </option>
           ))}
         </select>
-      </div>
-
-      {/* 음주 여부 및 운동 여부 */}
-      <div className={styles["write-SkinCareDiary-lifestyle-container"]}>
-        <button
-          className={`${styles["write-SkinCareDiary-toggleButton"]} ${
-            isAlcoholConsumed ? styles.active : ""
-          } ${isAlcoholConsumed ? styles.redBorder : ""}`}
-          onClick={toggleAlcoholConsumption}
-        >
-          {isAlcoholConsumed ? "🍺음주 O" : "어제 술을 마셨으면 클릭해주세요!"}
-        </button>
-        <button
-          className={`${styles["write-SkinCareDiary-toggleButton"]} ${
-            isExercised ? styles.active : ""
-          } ${isExercised ? styles.redBorder : ""}`}
-          onClick={toggleExerciseStatus}
-        >
-          {isExercised ? "👟운동 O" : "운동하셨다면 클릭해주세요!"}
-        </button>
       </div>
 
       {/* 오늘의 피부 일지 */}
