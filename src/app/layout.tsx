@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import AuthSession from "@/AuthSession";
 
 // 뷰포트 수정
 export const viewport: Viewport = {
@@ -36,7 +37,9 @@ export default function RootLayout({
           content="black-translucent"
         />
       </head>
-      <body className={noto.className}>{children}</body>
+      <body className={noto.className}>
+        <AuthSession>{children}</AuthSession>
+      </body>
     </html>
   );
 }

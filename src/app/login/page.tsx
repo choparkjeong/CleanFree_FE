@@ -1,5 +1,13 @@
-import Image from "next/image";
+"use client";
+
+import styles from "@/styles/pages/login.module.scss";
+import LoginBtn from "@/app/login/_component/LoginBtn";
+import React from "react";
 
 export default function Page() {
-  return <main>로그인</main>;
+  return (
+    <main className={styles["login-container"]}>
+      <LoginBtn />
+    </main>
+  );
 }

@@ -40,6 +40,9 @@ export default function Home() {
     );
   }
 
+  const date = new Date();
+  console.log(date);
+
   return (
     <>
       <Header />

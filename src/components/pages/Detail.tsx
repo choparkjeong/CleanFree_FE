@@ -18,7 +18,7 @@ export default function Detail() {
             수정하기 <HiMiniPencilSquare size={20} color="black" />
           </Link>
 
-          <img src="/dummy/iuprofile.jpg" />
+          <img src="/dummy/test1.jpg" />
 
           <div className={styles["modal-element-layout-e1"]}>
             피부가 좋았어요!
@@ -36,7 +36,6 @@ export default function Detail() {
             <div>닥터지 수분크림</div>
             <div>02샴푸 쿨</div>
             <div>다이소 3000원 바디로션</div>
-            <div>목욕탕 스킨로션</div>
             <div>알로아 팩</div>
           </div>
           <div className={styles["modal-element-layout-line"]}>ⓘ 기타 정보</div>
