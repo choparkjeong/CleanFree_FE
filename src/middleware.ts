@@ -18,6 +18,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // 적용이 되는 곳 선정
+  // 적용이 되는 곳 선정 //
   matcher: ["/write/:path*", "/i/flow/detail/:path*", "/"],
 };
