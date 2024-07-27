@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function getDiaryList() {
   const authorization = cookies().get("authorization")?.value;
@@ -12,6 +13,10 @@ export async function getDiaryList() {
       },
     }
   );
+
+  if (!res.ok) {
+    redirect("/login");
+  }
 
   const data = await res.json();
   console.log(data.data);
