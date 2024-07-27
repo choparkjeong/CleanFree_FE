@@ -37,17 +37,13 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
     setSelectedStatus(event.target.value);
   };
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result as string);
-        setIsModalOpen(true);
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleFileChange = async (event: any) => {
+    const file = event.target.files[0];
+    const url = await uploadImageToS3(file);
+    setIsLoading(true);
+    setImageUrl(url);
+    console.log("url: ", url);
+    console.log("imageUrl: ", imageUrl);
   };
 
   const handleCrop = async () => {
@@ -305,7 +301,7 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
       </div>
 
       {/* Cropper Modal */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div className={styles["cropper-modal"]}>
           <div className={styles["cropper-modal-content"]}>
             <Cropper
@@ -323,7 +319,7 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       <div style={{ paddingTop: "5vh" }} />
 
