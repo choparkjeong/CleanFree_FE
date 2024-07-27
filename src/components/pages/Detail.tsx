@@ -28,7 +28,8 @@ export default function Detail({ data, pathName }: DetailProps) {
   };
 
   // Convert sleep time to a readable format
-  const sleepText = `${data.sleepTime}시간 수면`;
+
+  // const sleepText = `${data.sleepTime}시간 수면`;
 
   // Format skin status
   const skinStatusText = data.skinStatus
@@ -62,7 +63,7 @@ export default function Detail({ data, pathName }: DetailProps) {
               {data.alcohol && <div>음주 O</div>}
               {data.exercise && <div>운동 O</div>}
 
-              <div>{sleepText}</div>
+              {data.sleepTime !== null && <div>{data.sleepTime}시간 수면</div>}
             </div>
             <div className={styles["modal-element-layout-line"]}>
               ⓘ 클렌징 제품 정보
