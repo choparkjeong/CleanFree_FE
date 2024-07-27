@@ -54,7 +54,7 @@
 .modal-element-scroll-container {
   overflow-y: auto; /* Enables vertical scrolling */
   overflow-x: hidden; /* Prevents horizontal scrolling */
-  height: 72vh; /* Set height to 50% of the viewport height */
+  height: 75vh; /* Set height to 50% of the viewport height */
   width: 100%; /* Ensures the container takes full width */
   box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
@@ -142,7 +142,7 @@
   background: #8bdd9c;
   color: white;
   // padding: 20px;
-  height: 10vh;
+  height: 7vh;
   border-radius: 0px 0px 10px 10px;
   @include center-element;
 }
