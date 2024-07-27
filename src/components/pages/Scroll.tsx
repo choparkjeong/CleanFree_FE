@@ -37,7 +37,9 @@ const Scroll: React.FC<ScrollProps> = ({ data }) => {
         ? "좋음"
         : diary.skinStatus === "NORMAL"
         ? "보통"
-        : "나쁨",
+        : diary.skinStatus === "BAD"
+        ? "나쁨"
+        : "피부상태 없음",
   }));
 
   return (
@@ -61,6 +63,9 @@ const Scroll: React.FC<ScrollProps> = ({ data }) => {
           )}
           {post.content === "나쁨" && (
             <div className={styles["status3"]}>고민좀 해볼까요?</div>
+          )}
+          {post.content === "피부상태 없음" && (
+            <div className={styles["status4"]}>피부상태가 없어요</div>
           )}
         </Link>
       ))}
