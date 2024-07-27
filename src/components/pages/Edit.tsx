@@ -153,7 +153,7 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
       }
 
       if (response.ok) {
-        router.push("/");
+        router.replace("/");
       }
 
       const data = await response.json();

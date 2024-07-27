@@ -133,7 +133,7 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
       if (!response.ok) {
         router.push("/login");
       } else {
-        router.push("/");
+        router.replace("/");
       }
       const data = await response.json();
       console.log("Success:", data);

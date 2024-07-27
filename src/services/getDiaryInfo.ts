@@ -17,6 +17,6 @@ export async function getDiaryInfo(pathName: any) {
   }
 
   const data = await res.json();
-  console.log(data);
+  console.log("변경사항", data);
   return data.data;
 }
