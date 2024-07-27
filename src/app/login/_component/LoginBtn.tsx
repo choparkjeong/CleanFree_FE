@@ -18,7 +18,7 @@ export default function LoginBtn() {
 
       <button className={styles["login-main-btn"]} onClick={onClickKaKaoSignIn}>
         <img src="/icons/kakaoIcon.png" />
-        Get started with KaKao
+        카카오톡으로 시작하기
       </button>
     </div>
   );

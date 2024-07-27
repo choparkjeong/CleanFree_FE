@@ -29,7 +29,7 @@ const Scroll: React.FC<ScrollProps> = ({ data }) => {
   // Transform the raw data into the desired format
   const posts: Post[] = data.map((diary) => ({
     id: diary.diaryId,
-    image: diary.thumbnailUrl || "/dummy/iuprofile.jpg", // Fallback image
+    image: diary.thumbnailUrl || "/dummy/defaultProfile.png", // Fallback image
     title: diary.writeTime,
     temp: diary.dayDifference, // Assuming dayDifference is a string like "1일전"
     content:

@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 export async function getDiaryList() {
   const authorization = cookies().get("authorization")?.value;
   console.log(authorization);
-  console.log("ㄹㅇㄴㅁㄹ");
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/diary/list`,
     {

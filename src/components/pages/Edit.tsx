@@ -333,6 +333,7 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
       <div style={{ paddingTop: "5vh" }} />
 
       {/* Submit Button */}
+
       <button onClick={handleSubmit} className={styles["submit-button"]}>
         제출
       </button>
