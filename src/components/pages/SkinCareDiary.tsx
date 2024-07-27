@@ -6,6 +6,7 @@ import "cropperjs/dist/cropper.css";
 import styles from "@/styles/pages/write.module.scss";
 import QuestionTitle from "@/components/ui/QuestionTitle";
 import { uploadImageToS3 } from "@/utils/image/aws";
+import { useRouter } from "next/navigation";
 
 interface SkinCareDiary {
   authorization: any;
@@ -14,6 +15,8 @@ interface SkinCareDiary {
 
 export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
   console.log(data);
+  const router = useRouter();
+
   const [selectedStatus, setSelectedStatus] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
@@ -150,6 +153,9 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
         throw new Error("Network response was not ok");
       }
 
+      if (response.ok) {
+        router.push("/");
+      }
       const data = await response.json();
       console.log("Success:", data);
     } catch (error) {
@@ -298,9 +304,6 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
         />
       </div>
 
-      {/* footer 패딩 */}
-      <div style={{ paddingTop: "17vh" }} />
-
       {/* Cropper Modal */}
       {isModalOpen && (
         <div className={styles["cropper-modal"]}>
@@ -322,10 +325,15 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
         </div>
       )}
 
+      <div style={{ paddingTop: "5vh" }} />
+
       {/* Submit Button */}
       <button onClick={handleSubmit} className={styles["submit-button"]}>
         제출
       </button>
+
+      {/* footer 패딩 */}
+      <div style={{ paddingTop: "5vh" }} />
     </div>
   );
 }

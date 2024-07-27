@@ -6,6 +6,7 @@ import "cropperjs/dist/cropper.css";
 import styles from "@/styles/pages/write.module.scss";
 import QuestionTitle from "@/components/ui/QuestionTitle";
 import { uploadImageToS3 } from "@/utils/image/aws";
+import { redirect, useRouter } from "next/navigation";
 
 interface EditProps {
   authorization: any;
@@ -14,6 +15,8 @@ interface EditProps {
 }
 
 export default function Edit({ authorization, data, pathName }: EditProps) {
+  const router = useRouter();
+
   const [selectedStatus, setSelectedStatus] = useState<string>(data.skinStatus);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
@@ -151,6 +154,10 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
+      }
+
+      if (response.ok) {
+        router.push("/");
       }
 
       const data = await response.json();
@@ -302,9 +309,6 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
         />
       </div>
 
-      {/* footer 패딩 */}
-      <div style={{ paddingTop: "17vh" }} />
-
       {/* Cropper Modal */}
       {isModalOpen && (
         <div className={styles["cropper-modal"]}>
@@ -326,10 +330,15 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
         </div>
       )}
 
+      <div style={{ paddingTop: "5vh" }} />
+
       {/* Submit Button */}
       <button onClick={handleSubmit} className={styles["submit-button"]}>
         제출
       </button>
+
+      {/* footer 패딩 */}
+      <div style={{ paddingTop: "5vh" }} />
     </div>
   );
 }
