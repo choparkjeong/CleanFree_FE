@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function getDiaryInfo(pathName: any) {
   const authorization = cookies().get("authorization")?.value;
@@ -10,6 +11,10 @@ export async function getDiaryInfo(pathName: any) {
       },
     }
   );
+
+  if (!res.ok) {
+    redirect("/login");
+  }
 
   const data = await res.json();
   console.log(data);
