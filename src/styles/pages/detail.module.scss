@@ -52,7 +52,7 @@
 }
 
 .modal-element-scroll-container {
-  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-y: auto;
   overflow-x: hidden; /* Prevents horizontal scrolling */
   height: 75vh; /* Set height to 50% of the viewport height */
   width: 100%; /* Ensures the container takes full width */
