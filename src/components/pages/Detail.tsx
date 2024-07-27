@@ -53,7 +53,12 @@ export default function Detail({ data, pathName }: DetailProps) {
             수정하기 <HiMiniPencilSquare size={20} color="black" />
           </Link>
           <div className={styles["modal-element-scroll-container"]}>
-            <img src={data.thumbnailUrl} alt="Diary Thumbnail" />
+            {data.thumbnailUrl === null && (
+              <img src="/dummy/defaultProfile.png" alt="Diary Thumbnail" />
+            )}
+            {data.thumbnailUrl !== null && (
+              <img src={data.thumbnailUrl} alt="Diary Thumbnail" />
+            )}
 
             <div className={styles["modal-element-layout-e1"]}>
               {skinStatusText}
