@@ -51,6 +51,7 @@ const Scroll: React.FC<ScrollProps> = ({ data }) => {
           href={`/i/flow/detail/${post.id}`}
           key={post.id}
           className={styles["post"]}
+          prefetch={false}
         >
           <img src={post.image} alt={`Image for post ${post.id}`} />
           <div className={styles["title-layout"]}>
