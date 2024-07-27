@@ -14,7 +14,6 @@ interface SkinCareDiary {
 }
 
 export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
-  console.log(data);
   const router = useRouter();
 
   const [selectedStatus, setSelectedStatus] = useState<string>("");
@@ -39,9 +38,10 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
 
   const handleFileChange = async (event: any) => {
     const file = event.target.files[0];
+    setIsLoading(true); // Set loading to true when starting to upload
     const url = await uploadImageToS3(file);
-    setIsLoading(true);
     setImageUrl(url);
+    setIsLoading(false); // Set loading to false once upload is complete
     console.log("url: ", url);
     console.log("imageUrl: ", imageUrl);
   };
@@ -57,9 +57,8 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
               type: "image/jpeg",
             });
             const url = await uploadImageToS3(file);
-            console.log(url);
             setImageUrl(url);
-            setIsLoading(true);
+            setIsLoading(false); // Set loading to false after cropping and upload
             setIsModalOpen(false);
           }
         });
@@ -101,27 +100,13 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
   const handleSubmit = async () => {
     let status;
 
-    if (selectedStatus == "좋음") {
+    if (selectedStatus === "좋음") {
       status = "GOOD";
-    }
-    if (selectedStatus == "보통") {
+    } else if (selectedStatus === "보통") {
       status = "NORMAL";
-    }
-    if (selectedStatus == "나쁨") {
+    } else if (selectedStatus === "나쁨") {
       status = "BAD";
     }
-
-    console.log(
-      authorization,
-      status,
-      imageUrl,
-      products,
-      sleepHours,
-      memo,
-      writeTime.toISOString(),
-      isAlcoholConsumed,
-      isExercised
-    );
 
     try {
       const response = await fetch(
@@ -147,9 +132,7 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
 
       if (!response.ok) {
         router.push("/login");
-      }
-
-      if (response.ok) {
+      } else {
         router.push("/");
       }
       const data = await response.json();
@@ -200,14 +183,18 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
       {/* 오늘의 피부 사진 */}
       <div style={{ paddingTop: "5vh" }} />
       <QuestionTitle text="📷 현재 피부를 사진으로 기록해봐요!" />
-      {imageUrl && (
-        <div className={styles["write-SkinCareDiary-photoPreview"]}>
-          <img
-            src={imageUrl}
-            alt="Preview"
-            className={styles["write-SkinCareDiary-photo-img"]}
-          />
-        </div>
+      {isLoading ? (
+        <div className={styles["loading-text"]}>로딩중⌛...</div>
+      ) : (
+        imageUrl && (
+          <div className={styles["write-SkinCareDiary-photoPreview"]}>
+            <img
+              src={imageUrl}
+              alt="Preview"
+              className={styles["write-SkinCareDiary-photo-img"]}
+            />
+          </div>
+        )
       )}
       <div className={styles["write-SkinCareDiary-photoBtn-container"]}>
         <label

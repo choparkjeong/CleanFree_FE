@@ -22,6 +22,7 @@ export const uploadImageToS3 = async (file: File): Promise<string> => {
 
     // CloudFront URL 생성
     const url = `https://${process.env.NEXT_PUBLIC_REACT_APP_CLOUDFRONT_DOMAIN}/${fileName}`;
+    console.log(url);
     return url;
   } catch (error) {
     console.error("Error uploading image to S3:", error);

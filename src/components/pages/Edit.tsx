@@ -39,17 +39,13 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
     setSelectedStatus(event.target.value);
   };
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result as string);
-        setIsModalOpen(true);
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleFileChange = async (event: any) => {
+    const file = event.target.files[0];
+    const url = await uploadImageToS3(file);
+    setIsLoading(false);
+    setImageUrl(url);
+    console.log("url: ", url);
+    console.log("imageUrl: ", imageUrl);
   };
 
   const handleCrop = async () => {
@@ -208,14 +204,18 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
       {/* 오늘의 피부 사진 */}
       <div style={{ paddingTop: "5vh" }} />
       <QuestionTitle text="📷 현재 피부를 사진으로 기록해봐요!" />
-      {imageUrl && (
-        <div className={styles["write-SkinCareDiary-photoPreview"]}>
-          <img
-            src={imageUrl}
-            alt="Preview"
-            className={styles["write-SkinCareDiary-photo-img"]}
-          />
-        </div>
+      {isLoading ? (
+        <div className={styles["loading-text"]}>로딩중⌛...</div>
+      ) : (
+        imageUrl && (
+          <div className={styles["write-SkinCareDiary-photoPreview"]}>
+            <img
+              src={imageUrl}
+              alt="Preview"
+              className={styles["write-SkinCareDiary-photo-img"]}
+            />
+          </div>
+        )
       )}
       <div className={styles["write-SkinCareDiary-photoBtn-container"]}>
         <label
@@ -310,7 +310,7 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
       </div>
 
       {/* Cropper Modal */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div className={styles["cropper-modal"]}>
           <div className={styles["cropper-modal-content"]}>
             <Cropper
@@ -328,7 +328,7 @@ export default function Edit({ authorization, data, pathName }: EditProps) {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       <div style={{ paddingTop: "5vh" }} />
 

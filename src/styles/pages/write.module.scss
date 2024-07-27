@@ -69,8 +69,7 @@
 
 .write-SkinCareDiary-photo-img {
   margin-top: 1vh;
-  width: 100px;
-  height: 130px;
+  width: 100%;
 }
 
 .write-SkinCareDiary-input-container {
@@ -263,4 +262,15 @@
   color: white;
   border-radius: 7px;
   border: none;
+}
+
+.loading-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 15px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  color: #8bdd9c;
 }
