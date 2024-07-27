@@ -150,7 +150,7 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
       );
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        router.push("/login");
       }
 
       if (response.ok) {
