@@ -6,6 +6,7 @@ export async function getRecentInfo() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/diary/recent`,
     {
+      cache: "no-store",
       headers: {
         Authorization: `Bearer ${authorization}`,
       },
