@@ -36,6 +36,10 @@ export default function RootLayout({
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
       </head>
       <body className={noto.className}>
         <AuthSession>{children}</AuthSession>
