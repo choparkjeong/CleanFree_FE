@@ -190,3 +190,65 @@
 .write-SkinCareDiary-toggleButton2.redBorder {
   border-color: #8bdd9c;
 }
+
+.write-SkinCareDiary-cropper-container {
+  position: relative;
+  margin-top: 20px;
+}
+
+.write-SkinCareDiary-cropper-container button {
+  margin-top: 10px;
+}
+
+.write-SkinCareDiary-photoPreview {
+  margin-top: 20px;
+}
+
+.write-SkinCareDiary-photo-img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*모달*/
+// styles/pages/write.module.scss
+.cropper-modal {
+  position: fixed; /* Use fixed to cover the entire viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.856); /* Slightly transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.cropper-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.623);
+  position: relative;
+}
+
+.cropper-modal-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.cropper-modal-buttons button {
+  padding: 10px 50px;
+  border: none;
+  background: #8bdd9c;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cropper-modal-buttons button:last-child {
+  background: #dddddd;
+}

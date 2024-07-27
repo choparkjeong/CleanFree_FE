@@ -7,26 +7,28 @@ import styles from "@/styles/pages/write.module.scss";
 import QuestionTitle from "@/components/ui/QuestionTitle";
 import { uploadImageToS3 } from "@/utils/image/aws";
 
-interface SkinCareDiary {
+interface EditProps {
   authorization: any;
   data: any;
+  pathName: any;
 }
 
-export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
-  console.log(data);
-  const [selectedStatus, setSelectedStatus] = useState<string>("");
+export default function Edit({ authorization, data, pathName }: EditProps) {
+  const [selectedStatus, setSelectedStatus] = useState<string>(data.skinStatus);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>(data.thumbnailUrl);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [sleepHours, setSleepHours] = useState<number | null>(null);
-  const [isAlcoholConsumed, setIsAlcoholConsumed] = useState<boolean>(false);
-  const [isExercised, setIsExercised] = useState<boolean>(false);
+  const [sleepHours, setSleepHours] = useState<number | null>(data.sleepTime);
+  const [isAlcoholConsumed, setIsAlcoholConsumed] = useState<boolean>(
+    data.alcohol
+  );
+  const [isExercised, setIsExercised] = useState<boolean>(data.exercise);
   const [product, setProduct] = useState<string>("");
-  const [products, setProducts] = useState<string[]>(data);
+  const [products, setProducts] = useState<string[]>(data.cosmetics);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [memo, setMemo] = useState<string>("");
-  const [writeTime, setWriteTime] = useState(new Date());
+  const [memo, setMemo] = useState<string>(data.memo);
+  const [writeTime, setWriteTime] = useState(data.writeTime);
 
   const cropperRef = useRef<any>(null);
 
@@ -100,46 +102,47 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
   };
 
   const handleSubmit = async () => {
-    let status;
+    // let status;
 
-    if (selectedStatus == "좋음") {
-      status = "GOOD";
-    }
-    if (selectedStatus == "보통") {
-      status = "NORMAL";
-    }
-    if (selectedStatus == "나쁨") {
-      status = "BAD";
-    }
+    // if (selectedStatus == "좋음") {
+    //   status = "GOOD";
+    // }
+    // if (selectedStatus == "보통") {
+    //   status = "NORMAL";
+    // }
+    // if (selectedStatus == "나쁨") {
+    //   status = "BAD";
+    // }
 
     console.log(
       authorization,
-      status,
+      selectedStatus,
       imageUrl,
       products,
       sleepHours,
       memo,
-      writeTime.toISOString(),
+      writeTime,
       isAlcoholConsumed,
       isExercised
     );
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/diary/write`,
+        `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/diary/update`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${authorization}`,
           },
           body: JSON.stringify({
-            skinStatus: status,
+            diaryId: pathName,
+            skinStatus: selectedStatus,
             thumbnailUrl: imageUrl,
             cosmetics: products,
             sleepTime: sleepHours,
             memo: memo,
-            writeTime: writeTime.toISOString(),
+            writeTime: writeTime,
             alcohol: isAlcoholConsumed,
             exercise: isExercised,
           }),
@@ -167,8 +170,8 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
           <input
             type="radio"
             name="status"
-            value="좋음"
-            checked={selectedStatus === "좋음"}
+            value="GOOD"
+            checked={selectedStatus === "GOOD"}
             onChange={handleChange}
           />
           <div>좋음🟢</div>
@@ -177,8 +180,8 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
           <input
             type="radio"
             name="status"
-            value="보통"
-            checked={selectedStatus === "보통"}
+            value="NORMAL"
+            checked={selectedStatus === "NORMAL"}
             onChange={handleChange}
           />
           <div>보통🟡</div>
@@ -187,8 +190,8 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
           <input
             type="radio"
             name="status"
-            value="나쁨"
-            checked={selectedStatus === "나쁨"}
+            value="BAD"
+            checked={selectedStatus === "BAD"}
             onChange={handleChange}
           />
           <div>나쁨🔴</div>
@@ -295,6 +298,7 @@ export default function SkinCareDiary({ authorization, data }: SkinCareDiary) {
         <textarea
           className={styles["write-SkinCareDiary-textArea"]}
           onChange={handleMemoChange}
+          value={memo}
         />
       </div>
 

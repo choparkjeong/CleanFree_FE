@@ -1,9 +1,17 @@
-"use client";
-
 import React from "react";
 import styles from "@/styles/pages/main.module.scss";
 import Link from "next/link";
 
+// Define the shape of the raw data
+interface Diary {
+  diaryId: number;
+  thumbnailUrl?: string;
+  writeTime: string;
+  dayDifference: string;
+  skinStatus: string;
+}
+
+// Define the shape of a post
 interface Post {
   id: number;
   image: string;
@@ -12,80 +20,26 @@ interface Post {
   content: string;
 }
 
-const posts: Post[] = [
-  {
-    id: 1,
-    image: "/dummy/test1.jpg",
-    title: "2024-07-26",
-    temp: "1일전",
-    content: "좋음",
-  },
-  {
-    id: 2,
-    image: "/dummy/test2.jpg",
-    title: "2024-07-25",
-    temp: "2일전",
-    content: "보통",
-  },
-  {
-    id: 3,
-    image: "/dummy/test3.jpg",
-    title: "2024-07-24",
-    temp: "3일전",
-    content: "나쁨",
-  },
-  {
-    id: 4,
-    image: "/dummy/test4.jpg",
-    title: "2024-07-23",
-    temp: "4일전",
-    content: "좋음",
-  },
-  {
-    id: 5,
-    image: "/dummy/iuprofile.jpg",
-    title: "2024-07-22",
-    temp: "1일전",
-    content: "좋음",
-  },
-  {
-    id: 6,
-    image: "/dummy/iuprofile.jpg",
-    title: "2024-07-21",
-    temp: "1일전",
-    content: "좋음",
-  },
-  {
-    id: 7,
-    image: "/dummy/iuprofile.jpg",
-    title: "2024-07-20",
-    temp: "1일전",
-    content: "좋음",
-  },
-  {
-    id: 8,
-    image: "/dummy/iuprofile.jpg",
-    title: "2024-07-19",
-    temp: "1일전",
-    content: "좋음",
-  },
-  {
-    id: 9,
-    image: "/dummy/iuprofile.jpg",
-    title: "2024-07-18",
-    temp: "1일전",
-    content: "좋음",
-  },
-  {
-    id: 10,
-    image: "/dummy/iuprofile.jpg",
-    title: "2024-07-17",
-    temp: "1일전",
-    content: "좋음",
-  },
-];
+// Update ScrollProps to accept raw data
+interface ScrollProps {
+  data: Diary[];
+}
 
-export default function Scroll() {
+const Scroll: React.FC<ScrollProps> = ({ data }) => {
+  // Transform the raw data into the desired format
+  const posts: Post[] = data.map((diary) => ({
+    id: diary.diaryId,
+    image: diary.thumbnailUrl || "/dummy/iuprofile.jpg", // Fallback image
+    title: diary.writeTime,
+    temp: diary.dayDifference, // Assuming dayDifference is a string like "1일전"
+    content:
+      diary.skinStatus === "GOOD"
+        ? "좋음"
+        : diary.skinStatus === "NORMAL"
+        ? "보통"
+        : "나쁨",
+  }));
+
   return (
     <div className={styles["scroll-container"]}>
       {posts.map((post) => (
@@ -94,7 +48,7 @@ export default function Scroll() {
           key={post.id}
           className={styles["post"]}
         >
-          <img src={post.image} />
+          <img src={post.image} alt={`Image for post ${post.id}`} />
           <div className={styles["title-layout"]}>
             <h2>{post.temp}</h2>
             <h4>{post.title}</h4>
@@ -112,4 +66,6 @@ export default function Scroll() {
       ))}
     </div>
   );
-}
+};
+
+export default Scroll;

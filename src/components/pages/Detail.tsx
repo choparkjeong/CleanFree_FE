@@ -1,47 +1,85 @@
 "use client";
+
 import styles from "@/styles/pages/detail.module.scss";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { HiMiniPencilSquare } from "react-icons/hi2";
 
-export default function Detail() {
+interface DetailProps {
+  data: {
+    diaryId: string;
+    skinStatus: string | null;
+    thumbnailUrl: string;
+    cosmetics: string[];
+    sleepTime: string;
+    memo: string;
+    writeTime: string;
+    alcohol: boolean;
+    exercise: boolean;
+  };
+  pathName?: any;
+}
+
+export default function Detail({ data, pathName }: DetailProps) {
   const router = useRouter();
 
   const handleBack = () => {
     router.back();
   };
+
+  // Convert sleep time to a readable format
+  const sleepText = `${data.sleepTime}시간 수면`;
+
+  // Format skin status
+  const skinStatusText = data.skinStatus
+    ? data.skinStatus === "GOOD"
+      ? "피부가 좋았어요!"
+      : data.skinStatus === "NORMAL"
+      ? "피부가 보통이에요."
+      : "피부가 나쁩니다."
+    : "피부 상태 정보 없음";
+
+  // Format alcohol and exercise information
+
   return (
     <main className={styles["modal-background"]}>
       <div className={styles["modal-container"]}>
         <div className={styles["modal-element-layout"]}>
-          <Link href={"/write"} className={styles["modal-element-edit"]}>
+          <Link
+            href={`/edit/${pathName}`}
+            className={styles["modal-element-edit"]}
+          >
             수정하기 <HiMiniPencilSquare size={20} color="black" />
           </Link>
+          <div className={styles["modal-element-scroll-container"]}>
+            <img src={data.thumbnailUrl} alt="Diary Thumbnail" />
 
-          <img src="/dummy/test1.jpg" />
+            <div className={styles["modal-element-layout-e1"]}>
+              {skinStatusText}
+            </div>
+            <div className={styles["modal-element-layout-e2"]}>
+              <div>{data.writeTime}</div>
+              {data.alcohol && <div>음주 O</div>}
+              {data.exercise && <div>운동 O</div>}
 
-          <div className={styles["modal-element-layout-e1"]}>
-            피부가 좋았어요!
-          </div>
-          <div className={styles["modal-element-layout-e2"]}>
-            <div>1일전</div>
-            <div>음주 X</div>
-            <div>운동 O</div>
-            <div>8시간 수면</div>
-          </div>
-          <div className={styles["modal-element-layout-line"]}>
-            ⓘ 클렌징 제품 정보
-          </div>
-          <div className={styles["modal-element-layout-e3"]}>
-            <div>닥터지 수분크림</div>
-            <div>02샴푸 쿨</div>
-            <div>다이소 3000원 바디로션</div>
-            <div>알로아 팩</div>
-          </div>
-          <div className={styles["modal-element-layout-line"]}>ⓘ 기타 정보</div>
-          <div className={styles["modal-element-layout-e4"]}>
-            수면시간은 지켰지만, 불규칙 적인 시간에 잤다. 그래도 다행히 피부가
-            좋은 편이라 행복하다
+              <div>{sleepText}</div>
+            </div>
+            <div className={styles["modal-element-layout-line"]}>
+              ⓘ 클렌징 제품 정보
+            </div>
+            <div className={styles["modal-element-layout-e3"]}>
+              {data.cosmetics.length > 0 ? (
+                data.cosmetics.map((item, index) => (
+                  <div key={index}>{item}</div>
+                ))
+              ) : (
+                <div>정보 없음</div>
+              )}
+            </div>
+            <div className={styles["modal-element-layout-line"]}>
+              ⓘ 기타 정보
+            </div>
+            <div className={styles["modal-element-layout-e4"]}>{data.memo}</div>
           </div>
         </div>
         <div className={styles["modal-back"]} onClick={handleBack}>
