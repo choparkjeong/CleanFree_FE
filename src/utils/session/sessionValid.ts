@@ -10,5 +10,5 @@ export async function sessionValid() {
   if (!session) {
     return false;
   }
-  return { authorization: authorization };
+  return authorization;
 }

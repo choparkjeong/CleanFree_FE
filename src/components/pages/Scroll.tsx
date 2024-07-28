@@ -1,19 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/pages/main.module.scss";
 import Link from "next/link";
+import { sessionValid } from "@/utils/session/sessionValid";
 
-// Define the shape of the raw data
-interface Diary {
-  diaryId: number;
-  thumbnailUrl?: string;
-  writeTime: string;
-  dayDifference: string;
-  skinStatus: string;
-}
-
-// Define the shape of a post
 interface Post {
   id: number;
   image: string;
@@ -22,14 +13,42 @@ interface Post {
   content: string;
 }
 
-// Update ScrollProps to accept raw data
-interface ScrollProps {
-  data: Diary[];
-}
+const Scroll: React.FC = () => {
+  const [data, setPosts] = useState<any>([]);
 
-const Scroll: React.FC<ScrollProps> = ({ data }) => {
-  // Transform the raw data into the desired format
-  const posts: Post[] = data.map((diary) => ({
+  useEffect(() => {
+    const fetchData = async () => {
+      const valid = await sessionValid();
+      console.log(valid);
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/diary/list`,
+          {
+            cache: "no-store",
+            headers: {
+              Authorization: `Bearer ${valid}`,
+            },
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error(`Failed to fetch: ${res.statusText}`);
+        }
+
+        const data: any = await res.json();
+        console.log(data);
+
+        setPosts(data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(data);
+  const posts: Post[] = data.map((diary: any) => ({
     id: diary.diaryId,
     image: diary.thumbnailUrl || "/dummy/defaultProfile.png",
     title: diary.writeTime,
@@ -51,7 +70,6 @@ const Scroll: React.FC<ScrollProps> = ({ data }) => {
           href={`/i/flow/detail/${post.id}`}
           key={post.id}
           className={styles["post"]}
-          prefetch={false}
         >
           <img src={post.image} alt={`Image for post ${post.id}`} />
           <div className={styles["title-layout"]}>
