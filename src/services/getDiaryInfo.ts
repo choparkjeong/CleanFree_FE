@@ -8,8 +8,8 @@ export async function getDiaryInfo(pathName: any) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/diary/${pathName}`,
     {
-      // cache: "no-store",
-      method: "POST",
+      // // cache: "no-store",
+      // method: "GET",
       headers: {
         Authorization: `Bearer ${authorization}`,
       },

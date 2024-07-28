@@ -31,7 +31,16 @@
   width: 80%;
   height: 90%;
   border-radius: 10px;
-  // box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.5);
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .modal-element-edit {
@@ -145,4 +154,10 @@
   height: 7vh;
   border-radius: 0px 0px 10px 10px;
   @include center-element;
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

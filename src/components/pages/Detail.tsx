@@ -4,6 +4,7 @@ import styles from "@/styles/pages/detail.module.scss";
 import Link from "next/link";
 import { redirect, useRouter } from "next/navigation";
 import { HiMiniPencilSquare } from "react-icons/hi2";
+import { useEffect, useState } from "react";
 
 interface DetailProps {
   data?: {
@@ -19,22 +20,37 @@ interface DetailProps {
   pathName?: string;
 }
 
-export default function Detail({ data = {}, pathName }: DetailProps) {
-  console.log(data);
+export default function Detail({ data, pathName }: DetailProps) {
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  // Simulate data fetching process
+  useEffect(() => {
+    if (data) {
+      setLoading(false);
+    } else {
+      // You could add actual data fetching logic here if needed
+      // For now, just simulate loading
+      setLoading(true);
+    }
+  }, [data]);
 
   const handleBack = () => {
     router.back();
   };
 
   // Format skin status
-  const skinStatusText = data.skinStatus
+  const skinStatusText = data?.skinStatus
     ? data.skinStatus === "GOOD"
       ? "피부가 좋았어요!"
       : data.skinStatus === "NORMAL"
       ? "피부가 보통이에요."
       : "피부가 나쁩니다."
     : "정보가 없어요";
+
+  if (loading) {
+    return <main className={styles["modal-background"]}></main>;
+  }
 
   return (
     <main className={styles["modal-background"]}>
@@ -48,23 +64,25 @@ export default function Detail({ data = {}, pathName }: DetailProps) {
           </Link>
           <div className={styles["modal-element-scroll-container"]}>
             <img
-              src={data.thumbnailUrl || "/dummy/defaultProfile.png"}
+              src={data?.thumbnailUrl || "/dummy/defaultProfile.png"}
               alt="Diary Thumbnail"
             />
             <div className={styles["modal-element-layout-e1"]}>
               {skinStatusText}
             </div>
             <div className={styles["modal-element-layout-e2"]}>
-              <div>{data.writeTime || "작성 시간 정보 없음"}</div>
-              {data.alcohol && <div>음주 O</div>}
-              {data.exercise && <div>운동 O</div>}
-              {data.sleepTime !== null && <div>{data.sleepTime}시간 수면</div>}
+              <div>{data?.writeTime || "작성 시간 정보 없음"}</div>
+              {data?.alcohol && <div>음주 O</div>}
+              {data?.exercise && <div>운동 O</div>}
+              {data?.sleepTime !== null && (
+                <div>{data?.sleepTime}시간 수면</div>
+              )}
             </div>
             <div className={styles["modal-element-layout-line"]}>
               ⓘ 클렌징 제품 정보
             </div>
             <div className={styles["modal-element-layout-e3"]}>
-              {data.cosmetics && data.cosmetics.length > 0 ? (
+              {data?.cosmetics && data.cosmetics.length > 0 ? (
                 data.cosmetics.map((item, index) => (
                   <div key={index}>{item}</div>
                 ))
@@ -76,7 +94,7 @@ export default function Detail({ data = {}, pathName }: DetailProps) {
               ⓘ 기타 정보
             </div>
             <div className={styles["modal-element-layout-e4"]}>
-              {data.memo || "메모 정보 없음"}
+              {data?.memo || "메모 정보 없음"}
             </div>
           </div>
         </div>
