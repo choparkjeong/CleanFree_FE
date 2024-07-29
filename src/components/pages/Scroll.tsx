@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/pages/main.module.scss";
 import Link from "next/link";
 import { sessionValid } from "@/utils/session/sessionValid";
+import { useRouter } from "next/navigation";
 
 interface Post {
   id: number;
@@ -15,6 +16,7 @@ interface Post {
 
 const Scroll: React.FC = () => {
   const [data, setPosts] = useState<any>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +42,7 @@ const Scroll: React.FC = () => {
 
         setPosts(data.data);
       } catch (error) {
+        router.replace("/login");
         console.error("Error fetching data:", error);
       }
     };

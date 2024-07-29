@@ -4,6 +4,7 @@ import NavBar from "@/components/layout/NavBar";
 import Slider from "@/components/layout/Slider";
 import Scroll from "@/components/pages/Scroll";
 import MainTitle from "@/components/ui/MainTitle";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Scroll />
       </main>
       <NavBar />
+      <Footer />
     </>
   );
 }
