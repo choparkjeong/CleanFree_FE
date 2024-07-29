@@ -17,6 +17,10 @@ export const {
       clientSecret: process.env.NEXT_PUBLIC_KAKAO_CLIENT_SECRET!,
     }),
   ],
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
 
   callbacks: {
     async jwt({ token, account }) {
@@ -51,7 +55,9 @@ export const {
         console.log(data);
         if (data.success === true) {
           const authorization: any = res.headers.get("authorization");
-          cookies().set("authorization", authorization);
+          cookies().set("authorization", authorization, {
+            maxAge: 30 * 24 * 60 * 60,
+          });
           return true;
         } else {
           throw data.message;
