@@ -9,7 +9,13 @@ export default function Footer() {
         자사는 책임을 지지 않습니다.
       </div>
       <div className={styles["footer-text2"]}>
-        ⓘ 사업자 등록번호 ( 398-44-00992 )
+        ⓘ 사업자 (상호)명 : 퍼스트무버
+      </div>
+      <div className={styles["footer-text2"]}>
+        ⓘ 사업자 (상호)주소 : 부산광역시 남구 수영로 266번길 82 504
+      </div>
+      <div className={styles["footer-text2"]}>
+        ⓘ 사업자 등록번호 : 398-44-00992
       </div>
       {/* <div className={styles["footer-text1"]}>398-44-00992</div> */}
     </footer>
