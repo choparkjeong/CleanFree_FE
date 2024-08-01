@@ -21,6 +21,46 @@ const references: Reference = {
   etc: ["https://xxxx"],
 };
 
+// Define product data
+const products = [
+  {
+    id: 1,
+    name: "레드 블레미쉬 수딩 업 선1",
+    image: "/dummy/productImg.png",
+    costRange: "10000 ~ 20000원",
+  },
+  {
+    id: 2,
+    name: "레드 블레미쉬 수딩 업 선2",
+    image: "/dummy/productImg.png",
+    costRange: "20000 ~ 30000원",
+  },
+  {
+    id: 3,
+    name: "레드 블레미쉬 수딩 업 선3",
+    image: "/dummy/productImg.png",
+    costRange: "30000 ~ 40000원",
+  },
+  {
+    id: 4,
+    name: "레드 블레미쉬 수딩 업 선4",
+    image: "/dummy/productImg.png",
+    costRange: "40000 ~ 50000원",
+  },
+  {
+    id: 5,
+    name: "레드 블레미쉬 수딩 업 선5",
+    image: "/dummy/productImg.png",
+    costRange: "50000 ~ 60000원",
+  },
+  {
+    id: 6,
+    name: "레드 블레미쉬 수딩 업 선6",
+    image: "/dummy/productImg.png",
+    costRange: "60000 ~ 70000원",
+  },
+];
+
 const Page: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -73,20 +113,51 @@ const Page: React.FC = () => {
       <Title title="화장품 추천" />
       <div className={styles["result-container2"]}>
         <div className={styles["details"]}>
-          <p>Details for item {activeIndex + 1}</p>
+          <div className={styles["details-layout1"]}>
+            <img
+              src={products[activeIndex].image}
+              alt={"이미지"}
+              style={{ width: "100%", height: "100%", borderRadius: "5px" }}
+            />
+          </div>
+          <div className={styles["details-layout2"]}>
+            <div className={styles["details-layout2-element1"]}>
+              {products[activeIndex]?.name || "Loading..."}
+            </div>
+            <div className={styles["details-layout2-element2"]}>
+              ⓘ 가격 : {products[activeIndex]?.costRange || "Loading..."}
+            </div>
+            <div className={styles["details-layout2-element3"]}>
+              <div className={styles["review1"]}>
+                <div>⭐⭐⭐⭐⭐</div>
+                <div>너무 좋아요 그냥 100만원을 해도 살겁니다 ㅋㅋ</div>
+              </div>
+              <div className={styles["review2"]}>
+                {" "}
+                <div>⭐</div>
+                <div>너무 싫어요 그냥 100만원을 줘도 안 살겁니다 ㅋㅋ</div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div className={styles["scroll-container"]} ref={containerRef}>
           <div className={styles["scroll-content"]}>
             <div className={styles["scroll-item-dummy"]}></div>
 
-            {Array.from({ length: 10 }, (_, index) => (
+            {products.map((product, index) => (
               <div
-                key={index}
+                key={product.id}
                 className={`${styles["scroll-item"]} ${
                   activeIndex === index ? styles["active"] : ""
                 }`}
               >
-                Item {index + 1}
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  style={{ width: "55px", height: "55px", borderRadius: "5px" }}
+                />
+                <div>{product.name}</div>
               </div>
             ))}
             <div className={styles["scroll-item-dummy"]}></div>
