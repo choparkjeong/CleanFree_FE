@@ -3,6 +3,7 @@
   padding-right: 4%;
   word-wrap: break-word;
   white-space: normal;
+  font-size: 15px;
 }
 
 .result-container2 {
@@ -42,17 +43,6 @@
   flex-wrap: wrap;
   gap: 10px;
 }
-
-// .result-container4 > div {
-//   // background-color: #e0e0e0;
-//   border-radius: 15px;
-//   padding: 5px 10px;
-//   font-size: 14px;
-//   color: rgb(108, 205, 195);
-//   white-space: nowrap;
-//   cursor: pointer;
-//   border: 1px solid rgb(108, 205, 195);
-// }
 
 .result-container4 > div {
   border-radius: 15px;
@@ -121,13 +111,13 @@
 }
 
 .details-layout2-element1 {
-  font-size: 17px;
+  font-size: 15px;
   word-wrap: break-word;
   white-space: normal;
 }
 
 .details-layout2-element2 {
-  font-size: 13px;
+  font-size: 12px;
   word-wrap: break-word;
   white-space: normal;
   color: grey;
@@ -145,39 +135,44 @@
   font-size: 11px;
   width: 47.5%;
   border-radius: 5px;
-  border: 1px solid rgb(173, 173, 173);
+  // border: 1px solid rgb(202, 202, 202);
+  background-color: #f4f4f4d0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .review1 div {
   // background-color: green;
   font-size: 11px;
-  text-align: center;
   padding-left: 2%;
   padding-right: 2%;
 }
 
+.review1 div:first-child {
+  font-size: 8px;
+}
+
 .review2 {
-  // background-color: green;
   font-size: 11px;
   width: 47.5%;
   border-radius: 5px;
-  border: 1px solid rgb(173, 173, 173);
+  background-color: #f4f4f4d0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .review2 div {
   // background-color: green;
   font-size: 11px;
-  text-align: center;
+
   padding-left: 2%;
   padding-right: 2%;
+}
+
+.review2 div:first-child {
+  font-size: 8px;
 }
 
 .scroll-container {
