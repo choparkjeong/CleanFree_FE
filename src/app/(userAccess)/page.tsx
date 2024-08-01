@@ -7,6 +7,7 @@ import { FaPaperPlane } from "react-icons/fa";
 import useAutosizeTextArea from "@/hooks/useAutosizeTextArea";
 import Link from "next/link";
 import CircleAnimation from "@/components/ui/CircleAnimation";
+import { RiInstallLine } from "react-icons/ri";
 
 const Home: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -34,8 +35,52 @@ const Home: React.FC = () => {
     { time: "한달 전", content: "내용" },
   ];
 
+  /*PWA 유도 하기*/
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
+    };
+  }, []);
+
+  const handleBeforeInstallPrompt = (event: Event) => {
+    event.preventDefault();
+    setDeferredPrompt(event);
+  };
+
+  const handleInstallClick = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+
+      deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("사용자가 설치 프롬프트에 동의했습니다.");
+        } else {
+          console.log("사용자가 설치 프롬프트를 무시했습니다.");
+        }
+
+        setDeferredPrompt(null);
+      });
+    }
+  };
+
   return (
     <>
+      {deferredPrompt && (
+        <div
+          onClick={handleInstallClick}
+          style={{ width: "100px", height: "300px", background: "red" }}
+        >
+          fsdafsd
+        </div>
+      )}
+
       <MainHeader />
       <main className={styles["main-layout"]}>
         {/* 로고 이미지 */}
