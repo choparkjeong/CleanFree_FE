@@ -3,7 +3,7 @@
   "short_name": "CleanFree",
   "icons": [
     {
-      "src": "/icons/PwaLogo.ico",
+      "src": "/icons/PwaLogo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
