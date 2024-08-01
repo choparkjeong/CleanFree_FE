@@ -8,8 +8,7 @@ export async function getDiaryInfo(pathName: any) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/diary/${pathName}`,
     {
-      // // cache: "no-store",
-      // method: "GET",
+      cache: "no-store",
       headers: {
         Authorization: `Bearer ${authorization}`,
       },
@@ -21,6 +20,5 @@ export async function getDiaryInfo(pathName: any) {
   }
 
   const data = await res.json();
-  console.log("변경사항", data);
   return data.data;
 }

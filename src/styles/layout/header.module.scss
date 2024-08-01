@@ -1,100 +1,27 @@
-.header-container {
-  // position: fixed;
+.main-header-layout {
+  // background-color: red;
+  height: 15vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* 슬라이더를 컨테이너의 밑으로 정렬 */
-  background-color: #8bdd9c;
-  // background: linear-gradient(#79ff94, #51ff74);
-
-  width: 100%;
-  height: 17vh;
-  justify-content: end;
-  padding-bottom: 2vh;
-}
-
-.header-element {
-  width: 100%;
-  height: 8vh;
-}
-
-.header-element-title1 {
-  padding-left: 4%;
-  font-size: 21px;
-  display: flex;
-  color: white;
-  font-weight: lighter;
-  // background-color: beige;
-  height: 4vh;
-}
-
-.header-element-title1 div {
-  font-weight: 800;
-}
-
-.header-element-title2 {
-  padding-left: 4%;
-  font-size: 21px;
-  color: white;
-  font-weight: lighter;
-  // background-color: rgb(134, 134, 75);
-  height: 4vh;
-}
-
-.header-content1-img {
-  width: 5vh;
-  height: 5vh;
-  display: flex;
-  margin-left: 4%;
-}
-
-.header-content1-input {
-  background-color: rgb(236, 236, 236);
-  border-radius: 999px;
-  // aspect-ratio: 5 / 1;
-  height: 5vh;
-  width: 65%;
-}
-
-.header-content1-alarm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 4%;
-  height: 5vh;
-}
-
-//글작성 관련 헤더
-//----------------------------글작성-----------------------------
-.writeHeader-container {
-  position: fixed;
-  height: 13vh;
-  width: 100%;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
   align-items: end;
-  border-bottom: 1px solid #e3e3e3;
 }
 
-.writeHeader-element {
-  height: 5vh;
+.main-header-layout ul {
+  // background-color: rgb(109, 79, 79);
   width: 100%;
-  // background-color: rgb(0, 255, 247);
+  height: 5vh;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
 }
 
-.writeHeader-element-e1 {
-  padding-left: 4%;
-}
-
-.writeHeader-element-title {
-  font-size: 17px;
-  font-weight: bold;
-}
-
-.writeHeader-element-e2 {
-  padding-right: 4%;
-  visibility: hidden;
+.main-header-layout ul li {
+  // color: rgb(105, 205, 181);
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
