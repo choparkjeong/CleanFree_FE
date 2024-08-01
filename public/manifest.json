@@ -1,9 +1,9 @@
 {
-  "name": "Clean0Free",
+  "name": "CleanFree",
   "short_name": "CleanFree",
   "icons": [
     {
-      "src": "/icons/PwaLogo.png",
+      "src": "/icons/PwaLogo.ico",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"

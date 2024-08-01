@@ -14,8 +14,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   manifest: "/manifest.json",
-  title: "Clean : Free",
-  description: "나만의 피부 일지를 기록해보세요!",
+  title: "CleanFree",
+  description: "클린프리(CleanFree) - 나만의 피부 일지를 기록해보세요!",
 };
 
 const noto = Noto_Sans_KR({
