@@ -22,14 +22,17 @@
 }
 
 .result-container3 > div {
-  // background-color: #e0e0e0;
   border-radius: 15px;
   padding: 5px 10px;
   font-size: 14px;
-  color: rgb(108, 205, 195);
+  background: #f1f1f1;
+  color: rgb(28, 28, 28);
   white-space: nowrap;
   cursor: pointer;
-  border: 1px solid rgb(108, 205, 195);
+  border: 1px solid #f1f1f1;
+  flex: 1 1 calc(25% - 10px);
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .result-container4 {
@@ -40,19 +43,58 @@
   gap: 10px;
 }
 
+// .result-container4 > div {
+//   // background-color: #e0e0e0;
+//   border-radius: 15px;
+//   padding: 5px 10px;
+//   font-size: 14px;
+//   color: rgb(108, 205, 195);
+//   white-space: nowrap;
+//   cursor: pointer;
+//   border: 1px solid rgb(108, 205, 195);
+// }
+
 .result-container4 > div {
-  // background-color: #e0e0e0;
   border-radius: 15px;
   padding: 5px 10px;
   font-size: 14px;
-  color: rgb(108, 205, 195);
   white-space: nowrap;
   cursor: pointer;
-  border: 1px solid rgb(108, 205, 195);
+
+  flex: 1 1 calc(25% - 10px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.reference-item1 {
+  background-color: rgb(255, 27, 27);
+}
+
+.reference-item2 {
+  background-color: rgb(87, 218, 122);
+}
+
+.reference-item3 {
+  background-color: rgb(60, 121, 253);
+}
+
+.link1 {
+  text-decoration: none;
+  color: white;
+}
+
+.link2 {
+  text-decoration: none;
+  color: white;
+}
+
+.link3 {
+  text-decoration: none;
+  color: white;
 }
 
 .details {
-  background: #f1f1f1;
+  border: 1px solid rgb(10, 197, 179);
   width: 70%;
   aspect-ratio: 2.5/1;
   border-radius: 8px;
@@ -60,12 +102,11 @@
 
 .scroll-container {
   position: relative;
-  width: 0%;
+  width: 100%;
   overflow-x: auto;
   white-space: nowrap;
   // background-color: green;
-  padding-left: 50%;
-  padding-right: 50%;
+  padding-bottom: 1vh;
 }
 
 .scroll-content {
@@ -75,7 +116,7 @@
 }
 
 .scroll-item {
-  background: #f1f1f1;
+  background: #ffffff;
   border-radius: 8px;
   flex: 0 0 auto;
   width: 150px;
@@ -89,6 +130,13 @@
 }
 
 .scroll-item.active {
-  // border: 1px solid rgb(10, 197, 179);
-  background-color: rgb(10, 197, 179);
+  border: 1px solid rgb(10, 197, 179);
+}
+
+.scroll-item-dummy {
+  background: none;
+  flex: 0 0 auto;
+  width: 180px;
+  height: 70px;
+  margin-top: 10px;
 }
