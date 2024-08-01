@@ -91,7 +91,8 @@
 
   display: flex;
   // justify-content: space-between;
-  align-items: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .details-layout1 {
@@ -105,9 +106,6 @@
   width: 59%;
   margin-left: 2%;
   // background-color: blue;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 }
 
 .details-layout2-element1 {
@@ -117,29 +115,27 @@
 }
 
 .details-layout2-element2 {
-  font-size: 12px;
+  font-size: 10px;
   word-wrap: break-word;
   white-space: normal;
   color: grey;
 }
 
 .details-layout2-element3 {
-  display: flex;
+  // display: flex;
   // background-color: red;
-  justify-content: space-between;
   margin-top: 1vh;
+  overflow: auto;
+  height: 100px;
 }
 
 .review1 {
   // background-color: green;
   font-size: 11px;
-  width: 47.5%;
+  width: 100%;
   border-radius: 5px;
   // border: 1px solid rgb(202, 202, 202);
   background-color: #f4f4f4d0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .review1 div {
@@ -155,12 +151,10 @@
 
 .review2 {
   font-size: 11px;
-  width: 47.5%;
+  width: 100%;
   border-radius: 5px;
   background-color: #f4f4f4d0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 1vh;
 }
 
 .review2 div {
