@@ -45,11 +45,19 @@ const InstallPrompt = () => {
   if (isIOS) {
     // iOS에서는 웹 앱 설치 프롬프트가 지원되지 않으므로, 다른 안내를 제공할 수 있습니다.
     return (
-      <div>
-        <p>
-          이 웹사이트를 홈 화면에 추가하려면 브라우저 메뉴에서 홈 화면에 추가를
-          선택하세요.
-        </p>
+      <div
+        style={{
+          position: "fixed",
+          bottom: "10px",
+          right: "10px",
+          background: "white",
+          padding: "10px",
+          borderRadius: "5px",
+          boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
+        }}
+      >
+        <p>이 웹앱을 설치하시겠습니까?</p>
+        <button onClick={handleInstallClick}>설치</button>
       </div>
     );
   }
