@@ -1,0 +1,94 @@
+.result-container1 {
+  padding-left: 4%;
+  padding-right: 4%;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.result-container2 {
+  // background-color: blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.result-container3 {
+  padding-left: 4%;
+  padding-right: 4%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.result-container3 > div {
+  // background-color: #e0e0e0;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: rgb(108, 205, 195);
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid rgb(108, 205, 195);
+}
+
+.result-container4 {
+  padding-left: 4%;
+  padding-right: 4%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.result-container4 > div {
+  // background-color: #e0e0e0;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: rgb(108, 205, 195);
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid rgb(108, 205, 195);
+}
+
+.details {
+  background: #f1f1f1;
+  width: 70%;
+  aspect-ratio: 2.5/1;
+  border-radius: 8px;
+}
+
+.scroll-container {
+  position: relative;
+  width: 0%;
+  overflow-x: auto;
+  white-space: nowrap;
+  // background-color: green;
+  padding-left: 50%;
+  padding-right: 50%;
+}
+
+.scroll-content {
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.scroll-item {
+  background: #f1f1f1;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  width: 150px;
+  height: 70px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.scroll-item.active {
+  // border: 1px solid rgb(10, 197, 179);
+  background-color: rgb(10, 197, 179);
+}

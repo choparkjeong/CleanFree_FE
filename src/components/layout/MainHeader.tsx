@@ -4,7 +4,7 @@ export default function MainHeader() {
   return (
     <header className={styles["main-header-layout"]}>
       <ul>
-        <li>CleanFree</li>
+        <li>GUIDE</li>
       </ul>
     </header>
   );

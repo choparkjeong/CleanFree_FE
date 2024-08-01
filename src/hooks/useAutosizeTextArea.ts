@@ -10,7 +10,7 @@ function useAutosizeTextArea(
     if (textarea) {
       textarea.style.height = "auto"; // Reset height
       const scrollHeight = textarea.scrollHeight;
-      const maxHeight = 200; // Maximum height
+      const maxHeight = 150; // Maximum height
 
       textarea.style.height =
         scrollHeight > maxHeight ? `${maxHeight}px` : `${scrollHeight}px`;
