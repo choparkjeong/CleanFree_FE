@@ -6,6 +6,7 @@ import MainHeader from "@/components/layout/MainHeader";
 import { FaPaperPlane } from "react-icons/fa";
 import useAutosizeTextArea from "@/hooks/useAutosizeTextArea";
 import Link from "next/link";
+import CircleAnimation from "@/components/ui/CircleAnimation";
 
 const Home: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -38,20 +39,22 @@ const Home: React.FC = () => {
       <MainHeader />
       <main className={styles["main-layout"]}>
         {/* 로고 이미지 */}
-        <div className={styles["logo-container"]}>
+        {/* <div className={styles["logo-container"]}>
           <img
             src="/icons/CleanFreeLogo.png"
             alt="Logo"
             className={styles["logo-image"]}
           />
-        </div>
+        </div> */}
 
-        <div className={styles["guide-container"]}>
+        <CircleAnimation />
+
+        {/* <div className={styles["guide-container"]}>
           <div className={styles["top-left"]}>가이드1</div>
           <div className={styles["top-right"]}>가이드2</div>
           <div className={styles["bottom-left"]}>가이드3</div>
           <div className={styles["bottom-right"]}>가이드4</div>
-        </div>
+        </div> */}
 
         <div style={{ width: "100%" }}>
           {/* 스크롤 리스트 */}
