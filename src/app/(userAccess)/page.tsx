@@ -8,7 +8,7 @@ import useAutosizeTextArea from "@/hooks/useAutosizeTextArea";
 import Link from "next/link";
 import CircleAnimation from "@/components/ui/CircleAnimation";
 import { RiInstallLine } from "react-icons/ri";
-import InstallPrompt from "@/utils/InstallPrompt";
+// import InstallPrompt from "@/utils/InstallPrompt";
 
 const Home: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
   return (
     <>
       <MainHeader />
-      <InstallPrompt />
+      {/* <InstallPrompt /> */}
 
       <main className={styles["main-layout"]}>
         {/* 로고 이미지 */}
