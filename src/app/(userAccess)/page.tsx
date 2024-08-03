@@ -9,6 +9,7 @@ import Link from "next/link";
 import CircleAnimation from "@/components/ui/CircleAnimation";
 import { postSearchData } from "@/services/postSearchData";
 import { getListData } from "@/services/getListData";
+import { truncateText } from "@/utils/text/truncateText";
 
 const Home: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -73,7 +74,7 @@ const Home: React.FC = () => {
                     >
                       <div className={styles["scroll-item1"]}>{item.time}</div>
                       <div className={styles["scroll-item2"]}>
-                        {item.question}
+                        {truncateText(item.question, 15)}
                       </div>
                     </Link>
                   )}
@@ -83,7 +84,7 @@ const Home: React.FC = () => {
                         분석중
                       </div>
                       <div className={styles["scroll-item2-invalid"]}>
-                        {item.question}
+                        {truncateText(item.question, 15)}
                       </div>
                     </div>
                   )}
