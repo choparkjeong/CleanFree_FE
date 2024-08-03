@@ -11,8 +11,6 @@ import { postSearchData } from "@/services/postSearchData";
 import { getListData } from "@/services/getListData";
 import { truncateText } from "@/utils/text/truncateText";
 
-export const revalidate = 60;
-
 const Home: React.FC = () => {
   //test
 
