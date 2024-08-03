@@ -15,7 +15,7 @@ export default function JoinForm({ snsId }: JoinFormProps) {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [birthdate, setBirthdate] = useState("0000-00-00");
+  const [birthdate, setBirthdate] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function JoinForm({ snsId }: JoinFormProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className={styles["join-title1"]}>클린프리{snsId}</div>
+      <div className={styles["join-title1"]}>클린프리</div>
       <div className={styles["join-title2"]}>정보를 입력하고 사용해봐요!</div>
 
       <Label title="이름" />
