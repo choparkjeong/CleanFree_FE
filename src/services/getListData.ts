@@ -7,7 +7,9 @@ export async function getListData() {
   const authorization = cookies().get("authorization")?.value;
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/search/list`,
+
     {
+      cache: "no-store",
       headers: {
         Authorization: `Bearer ${authorization}`,
       },
