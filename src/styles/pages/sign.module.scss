@@ -56,11 +56,11 @@
   width: 100%;
   outline: none;
   box-sizing: border-box;
-  height: 7vh;
+  height: 6vh;
   padding: 4%;
   border-radius: 12px;
   border: 1px solid rgb(193, 193, 193);
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .gender-options {
@@ -77,9 +77,9 @@
 
   cursor: pointer;
   width: 48%;
-  height: 7vh;
+  height: 6vh;
   transition: background-color 0.3s, border-color 0.3s;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .selected {
