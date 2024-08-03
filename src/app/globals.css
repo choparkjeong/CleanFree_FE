@@ -3,3 +3,9 @@ body {
   margin: 0;
   /* background: linear-gradient(135deg, rgb(180, 230, 255), rgb(136, 130, 255)); */
 }
+
+input,
+textarea,
+button {
+  appearance: none;
+}

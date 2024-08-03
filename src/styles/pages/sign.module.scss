@@ -64,13 +64,6 @@
   font-size: 18px;
 }
 
-input[type="date"] {
-  -webkit-appearance: textfield;
-}
-input[type="date"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
 .gender-options {
   display: flex;
   justify-content: space-between;
