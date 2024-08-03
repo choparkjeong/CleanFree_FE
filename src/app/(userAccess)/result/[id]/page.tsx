@@ -121,18 +121,14 @@ const Page: React.FC = (props) => {
             </div>
             <div className={styles["details-layout2-element3"]}>
               <div className={styles["review1"]}>
-                {"⭐".repeat(
-                  resultData?.cosmetics[activeIndex].maxReview.score
-                )}
+                {"★".repeat(resultData?.cosmetics[activeIndex].maxReview.score)}
 
                 <div>
                   {resultData?.cosmetics[activeIndex].maxReview.summary}
                 </div>
               </div>
               <div className={styles["review2"]}>
-                {"⭐".repeat(
-                  resultData?.cosmetics[activeIndex].minReview.score
-                )}
+                {"★".repeat(resultData?.cosmetics[activeIndex].minReview.score)}
 
                 <div>
                   {resultData?.cosmetics[activeIndex].minReview.summary}
