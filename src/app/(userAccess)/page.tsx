@@ -14,6 +14,7 @@ import { truncateText } from "@/utils/text/truncateText";
 const Home: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [listData, setListData] = useState<any[]>([]);
+  const [refresh, setRefresh] = useState(false);
   const textareaRef = useAutosizeTextArea(inputValue);
 
   useEffect(() => {
@@ -34,14 +35,14 @@ const Home: React.FC = () => {
     };
 
     handleListData();
-  }, []);
+  }, [refresh]);
 
   // 검색 API 호출
   const handleSearchClick = async () => {
     if (inputValue.trim()) {
       await postSearchData(inputValue);
       setInputValue("");
-      // 여기에 새로고침 필요
+      setRefresh(!refresh);
     }
   };
 

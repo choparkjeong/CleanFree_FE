@@ -17,6 +17,7 @@ export default function JoinForm({ snsId }: JoinFormProps) {
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const isValidMember = async () => {
@@ -39,7 +40,7 @@ export default function JoinForm({ snsId }: JoinFormProps) {
       if (data.data) {
         router.push("/");
       }
-
+      setLoading(false);
       return;
     };
 
@@ -56,59 +57,67 @@ export default function JoinForm({ snsId }: JoinFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={styles["join-title1"]}>클린프리</div>
-      <div className={styles["join-title2"]}>정보를 입력하고 사용해봐요!</div>
+    <>
+      {loading ? (
+        <div className={styles["loading"]}>LOADING...</div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div className={styles["join-title1"]}>클린프리</div>
+          <div className={styles["join-title2"]}>
+            정보를 입력하고 사용해봐요!
+          </div>
 
-      <Label title="이름" />
-      <input
-        className={styles["input"]}
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+          <Label title="이름" />
+          <input
+            className={styles["input"]}
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-      <Label title="이메일" />
-      <input
-        className={styles["input"]}
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <Label title="이메일" />
+          <input
+            className={styles["input"]}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-      <Label title="생년월일" />
-      <input
-        className={styles["input"]}
-        type="date"
-        value={birthdate}
-        onChange={(e) => setBirthdate(e.target.value)}
-      />
+          <Label title="생년월일" />
+          <input
+            className={styles["input"]}
+            type="date"
+            value={birthdate}
+            onChange={(e) => setBirthdate(e.target.value)}
+          />
 
-      <Label title="성별" />
-      <div className={styles["gender-options"]}>
-        <button
-          type="button"
-          className={`${styles["gender-button"]} ${
-            selectedGender === "male" ? styles["selected"] : ""
-          }`}
-          onClick={() => handleGenderSelect("male")}
-        >
-          남
-        </button>
-        <button
-          type="button"
-          className={`${styles["gender-button"]} ${
-            selectedGender === "female" ? styles["selected"] : ""
-          }`}
-          onClick={() => handleGenderSelect("female")}
-        >
-          여
-        </button>
-      </div>
+          <Label title="성별" />
+          <div className={styles["gender-options"]}>
+            <button
+              type="button"
+              className={`${styles["gender-button"]} ${
+                selectedGender === "male" ? styles["selected"] : ""
+              }`}
+              onClick={() => handleGenderSelect("male")}
+            >
+              남
+            </button>
+            <button
+              type="button"
+              className={`${styles["gender-button"]} ${
+                selectedGender === "female" ? styles["selected"] : ""
+              }`}
+              onClick={() => handleGenderSelect("female")}
+            >
+              여
+            </button>
+          </div>
 
-      <button type="submit" className={styles["submit-button"]}>
-        제출하기
-      </button>
-    </form>
+          <button type="submit" className={styles["submit-button"]}>
+            제출하기
+          </button>
+        </form>
+      )}
+    </>
   );
 }
