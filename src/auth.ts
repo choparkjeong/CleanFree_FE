@@ -37,7 +37,8 @@ export const {
 
       return { ...session, ...token };
     },
-    async signIn({ account }) {
+    async signIn({ account, user }) {
+      // console.log("auth", user);
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/auth/login`,
@@ -47,7 +48,7 @@ export const {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              snsId: account?.providerAccountId,
+              snsId: user?.email,
             }),
           }
         );

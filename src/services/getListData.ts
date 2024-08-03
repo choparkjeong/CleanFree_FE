@@ -12,10 +12,10 @@ export async function getListData() {
       },
     }
   );
-
   if (res.ok) {
     const data = await res.json();
-    console.log(data.data.results);
+    console.log(data.data.result);
+
     return data.data.results;
   }
   return;
