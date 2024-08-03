@@ -8,13 +8,12 @@ export async function middleware(request: NextRequest) {
 
   // 엑세스 토큰이 없을 경우
   if (authorization === undefined) {
-    return NextResponse.redirect("http://localhost:3000/login");
+    return NextResponse.redirect("https://www.cleanfree.site/login");
     // https://www.cleanfree.site/
   }
 
-  // 로그인을 안했을때 만 해당
   if (!session) {
-    return NextResponse.redirect("http://localhost:3000/login");
+    return NextResponse.redirect("https://www.cleanfree.site/login");
   }
 }
 
