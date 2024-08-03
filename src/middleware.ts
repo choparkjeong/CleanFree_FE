@@ -6,20 +6,21 @@ export async function middleware(request: NextRequest) {
   const session = await auth();
   const authorization = cookies().get("authorization")?.value;
 
-  // 엑세스 토큰이랑, uuid가 널일경우
-  // if (authorization === null) {
-  //   return NextResponse.redirect("https://www.cleanfree.site/login");
-  // }
+  // 엑세스 토큰이 없을 경우
+  if (authorization === undefined) {
+    return NextResponse.redirect("http://localhost:3000/login");
+    // https://www.cleanfree.site/
+  }
 
-  // // 로그인을 안했을때 만 해당
-  // if (!session) {
-  //   return NextResponse.redirect("https://www.cleanfree.site/login");
-  // }
+  // 로그인을 안했을때 만 해당
+  if (!session) {
+    return NextResponse.redirect("http://localhost:3000/login");
+  }
 }
 
 export const config = {
-  // 적용이 되는 곳 선정
-  matcher: [],
+  // matcher: [],
+  matcher: ["/"],
 
   // matcher: ["/edit/:path*", "/write/:path*", "/i/flow/detail/:path*", "/"],
 };

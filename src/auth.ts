@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import KaKaoProvider from "next-auth/providers/kakao";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const {
   handlers: { GET, POST },
@@ -50,20 +51,21 @@ export const {
             }),
           }
         );
-        console.log(res.status);
+
         const data = await res.json();
-        console.log(data);
-        if (data.success === true) {
+        console.log(res.status);
+        if (res.status === 200) {
           const authorization: any = res.headers.get("authorization");
           cookies().set("authorization", authorization, {
             maxAge: 30 * 24 * 60 * 60,
           });
           return true;
+        } else if (res.status === 201) {
+          return true;
         } else {
           throw data.message;
         }
       } catch (error) {
-        console.log(error);
         return true;
       }
     },

@@ -8,88 +8,55 @@ import { FaYoutube, FaBlogger, FaLink } from "react-icons/fa";
 import Link from "next/link";
 import ResultFooter from "@/components/layout/ResultFooter";
 import ResultNav from "@/components/layout/ResultNav";
+import { getResultData } from "@/services/getResultData";
 
-interface Reference {
+interface Review {
+  score: any;
+  summary: string;
+}
+
+interface Cosmetic {
+  cosmetic: string;
+  image: string;
+  costRange: string;
+  url: string;
+  maxReview: Review;
+  minReview: Review;
+}
+
+interface References {
   youtube: string[];
   blog: string[];
   etc: string[];
 }
 
-const references: Reference = {
-  youtube: ["https://youtube.com/xxxx", "https://youtube.com/yyyy"],
-  blog: ["https://xxxx"],
-  etc: ["https://xxxx"],
-};
+interface ResultData {
+  resultId: string;
+  memberUuid: string;
+  question: string;
+  cosmetics: Cosmetic[];
+  ingredients: string[];
+  references: References;
+  isAnalyze: boolean;
+}
 
-// Define product data with reviews and ratings
-const products = [
-  {
-    id: 1,
-    name: "레드 블레미쉬 수딩 업 선1",
-    image: "/dummy/productImg.png",
-    costRange: "10000 ~ 20000원",
-    reviews: [
-      { rating: 5, text: "너무 좋아요 그냥 100만원을 해도 살겁니다 ㅋㅋ" },
-      { rating: 1, text: "너무 싫어요 그냥 100만원을 줘도 안 살겁니다 ㅋㅋ" },
-    ],
-  },
-  {
-    id: 2,
-    name: "레드 블레미쉬 수딩 업 선2",
-    image: "/dummy/productImg.png",
-    costRange: "20000 ~ 30000원",
-    reviews: [
-      { rating: 4, text: "괜찮아요, 가격도 적당하고 사용할만해요." },
-      { rating: 2, text: "별로였어요. 다시는 안 사요." },
-    ],
-  },
-  {
-    id: 3,
-    name: "레드 블레미쉬 수딩 업 선3",
-    image: "/dummy/productImg.png",
-    costRange: "30000 ~ 40000원",
-    reviews: [
-      { rating: 3, text: "그럭저럭 괜찮지만, 기대보다 별로." },
-      { rating: 5, text: "매우 만족합니다. 추천해요!" },
-    ],
-  },
-  {
-    id: 4,
-    name: "레드 블레미쉬 수딩 업 선4",
-    image: "/dummy/productImg.png",
-    costRange: "40000 ~ 50000원",
-    reviews: [
-      { rating: 4, text: "전체적으로 만족스럽습니다." },
-      { rating: 3, text: "보통이에요. 다시는 안 사요." },
-    ],
-  },
-  {
-    id: 5,
-    name: "레드 블레미쉬 수딩 업 선5",
-    image: "/dummy/productImg.png",
-    costRange: "50000 ~ 60000원",
-    reviews: [
-      { rating: 5, text: "정말 좋습니다. 계속 사용할 예정입니다." },
-      { rating: 4, text: "가격 대비 좋은 제품입니다." },
-    ],
-  },
-  {
-    id: 6,
-    name: "레드 블레미쉬 수딩 업 선6",
-    image: "/dummy/productImg.png",
-    costRange: "60000 ~ 70000원",
-    reviews: [
-      { rating: 2, text: "별로였어요. 다시는 안 사요." },
-      { rating: 4, text: "나쁘지 않아요. 사용해 볼만 합니다." },
-    ],
-  },
-];
+const Page: React.FC = (props) => {
+  const pathName: any = props;
+  const [resultData, setResultData] = useState<ResultData | null>(null);
 
-const Page: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   useEffect(() => {
+    // 상세 리스트 불러오기
+    const handleListData = async () => {
+      const data = await getResultData(pathName.params.id);
+      setResultData(data);
+    };
+
+    handleListData();
+
+    //케러셀 확대 동작
     const container = containerRef.current;
 
     const handleScroll = () => {
@@ -117,7 +84,7 @@ const Page: React.FC = () => {
         }
       });
 
-      console.log(`Active index: ${closestIndex}`); // Debugging statement
+      // console.log(`Active index: ${closestIndex}`); // Debugging statement
 
       setActiveIndex(closestIndex);
     };
@@ -133,35 +100,44 @@ const Page: React.FC = () => {
     <>
       <ResultHeader />
       <Title title="검색 내용" />
-      <div className={styles["result-container1"]}>
-        평소에 피부가 간지럽다가, 어쩔때는 좋고 가끔씩 아닐때도 있음 ㅇㅇ
-        그래서, 약간 더울때는 밖에나가면 썬크림 바를때도 있고 아닐때도 있어서,
-        그냥 아픔 ㅇㅇ 해결좀 아 그냥 뭐써야하는지 ㅇㅇ
-      </div>
+      <div className={styles["result-container1"]}>{resultData?.question}</div>
       <Title title="화장품 추천" />
       <div className={styles["result-container2"]}>
         <div className={styles["details"]}>
           <div className={styles["details-layout1"]}>
             <img
-              src={products[activeIndex].image}
+              src={resultData?.cosmetics[activeIndex].image}
               alt={"이미지"}
               style={{ width: "100%", height: "100%", borderRadius: "5px" }}
             />
           </div>
           <div className={styles["details-layout2"]}>
             <div className={styles["details-layout2-element1"]}>
-              {products[activeIndex]?.name || "Loading..."}
+              {resultData?.cosmetics[activeIndex]?.cosmetic || "Loading..."}
             </div>
             <div className={styles["details-layout2-element2"]}>
-              ⓘ 가격 : {products[activeIndex]?.costRange || "Loading..."}
+              ⓘ 가격 :{" "}
+              {resultData?.cosmetics[activeIndex]?.costRange || "Loading..."}
             </div>
             <div className={styles["details-layout2-element3"]}>
-              {products[activeIndex]?.reviews.map((review, index) => (
-                <div key={index} className={styles[`review${index + 1}`]}>
-                  <div>{"⭐".repeat(review.rating)}</div>
-                  <div>{review.text}</div>
+              <div className={styles["review1"]}>
+                {"⭐".repeat(
+                  resultData?.cosmetics[activeIndex].maxReview.score
+                )}
+
+                <div>
+                  {resultData?.cosmetics[activeIndex].maxReview.summary}
                 </div>
-              ))}
+              </div>
+              <div className={styles["review2"]}>
+                {"⭐".repeat(
+                  resultData?.cosmetics[activeIndex].minReview.score
+                )}
+
+                <div>
+                  {resultData?.cosmetics[activeIndex].minReview.summary}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -170,19 +146,19 @@ const Page: React.FC = () => {
           <div className={styles["scroll-content"]}>
             <div className={styles["scroll-item-dummy"]}></div>
 
-            {products.map((product, index) => (
+            {resultData?.cosmetics?.map((product, index) => (
               <div
-                key={product.id}
+                key={product.cosmetic + index}
                 className={`${styles["scroll-item"]} ${
                   activeIndex === index ? styles["active"] : ""
                 }`}
               >
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt="이미지 없음"
                   style={{ width: "55px", height: "55px", borderRadius: "5px" }}
                 />
-                <div>{product.name}</div>
+                <div>{product.cosmetic}</div>
               </div>
             ))}
             <div className={styles["scroll-item-dummy"]}></div>
@@ -191,20 +167,13 @@ const Page: React.FC = () => {
       </div>
       <Title title="성분 분석" />
       <div className={styles["result-container3"]}>
-        <div>글리세린</div>
-        <div>히알루론산 (Hyaluronic Acid)</div>
-        <div>세라마이드</div>
-        <div>비타민 E</div>
-        <div>녹차 추출물</div>
-        <div>징크 옥사이드</div>
-        <div>글리콜산</div>
-        <div>티타늄 이산화물 (Titanium Dioxide)</div>
-        <div>판테놀</div>
-        <div>에센셜 오일 (Essential Oils)</div>
+        {resultData?.ingredients.map((ingredient, index) => (
+          <div key={index}>{ingredient}</div>
+        ))}
       </div>
       <Title title="출처 및 참고" />
       <div className={styles["result-container4"]}>
-        {references.youtube.map((url, index) => (
+        {resultData?.references.youtube.map((url, index) => (
           <div key={`youtube-${index}`} className={styles["reference-item1"]}>
             <Link
               href={url}
@@ -216,7 +185,7 @@ const Page: React.FC = () => {
             </Link>
           </div>
         ))}
-        {references.blog.map((url, index) => (
+        {resultData?.references.blog.map((url, index) => (
           <div key={`blog-${index}`} className={styles["reference-item2"]}>
             <Link
               href={url}
@@ -228,7 +197,7 @@ const Page: React.FC = () => {
             </Link>
           </div>
         ))}
-        {references.etc.map((url, index) => (
+        {resultData?.references.etc.map((url, index) => (
           <div key={`etc-${index}`} className={styles["reference-item3"]}>
             <Link
               href={url}

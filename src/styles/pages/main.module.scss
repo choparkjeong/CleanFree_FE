@@ -74,6 +74,7 @@
   // margin-top: 15vh;
   scroll-behavior: smooth;
   // background-color: green;
+  padding-bottom: 2px;
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -115,16 +116,23 @@
   border: 1px solid rgb(194, 194, 194);
 }
 
-.scroll-item:first-of-type .scroll-item1 {
+.scroll-item1-invalid {
   color: rgb(10, 197, 179);
+  font-size: 12px;
+  text-align: end;
+  padding-right: 5px;
 }
 
-.scroll-item:first-of-type .scroll-item2 {
-  // background-color: rgb(10, 197, 179);
+.scroll-item2-invalid {
+  // width: 86%;
+  height: 38px;
+  border-radius: 10px;
+  padding: 7%;
+  word-wrap: break-word;
+  white-space: normal;
+  font-size: 14px;
   background: linear-gradient(to right, rgb(117, 221, 210), rgb(42, 237, 217));
-
   border: none;
-
   color: white;
 }
 

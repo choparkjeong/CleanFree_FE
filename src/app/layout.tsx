@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   manifest: "/manifest.json",
   title: "CleanFree",
-  description: "클린프리(CleanFree) - 나만의 피부 일지를 기록해보세요!",
+  description: "클린프리(CleanFree) - 나에게 맞는 화장품을 보여줘!",
 };
 
 const noto = Noto_Sans_KR({
@@ -36,10 +36,6 @@ export default function RootLayout({
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        {/* <meta
-          httpEquiv="Content-Security-Policy"
-          content="upgrade-insecure-requests"
-        /> */}
       </head>
       <body className={noto.className}>
         <AuthSession>{children}</AuthSession>
