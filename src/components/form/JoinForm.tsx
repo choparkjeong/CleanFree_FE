@@ -11,10 +11,11 @@ interface JoinFormProps {
 }
 
 export default function JoinForm({ snsId }: JoinFormProps) {
+  console.log(snsId);
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [birthdate, setBirthdate] = useState("");
+  const [birthdate, setBirthdate] = useState("0000-00-00");
   const [selectedGender, setSelectedGender] = useState("");
 
   useEffect(() => {
