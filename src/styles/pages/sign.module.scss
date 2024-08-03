@@ -33,6 +33,7 @@
   border: none;
   padding-top: 2vh;
   padding-bottom: 2vh;
+  color: black;
 }
 
 /*@@@@@@@@@@@@@@@@@@@로그인@@@@@@@@@@@@@@@@@@@*/
@@ -41,13 +42,13 @@
 }
 
 .join-title1 {
-  font-size: 30px;
+  font-size: 27px;
   font-weight: bold;
-  margin-top: 5vh;
+  margin-top: 8vh;
 }
 
 .join-title2 {
-  font-size: 20px;
+  font-size: 17px;
   margin-top: 1vh;
   color: #acacac;
 }
@@ -60,7 +61,14 @@
   padding: 4%;
   border-radius: 12px;
   border: 1px solid rgb(193, 193, 193);
-  font-size: 20px;
+  font-size: 18px;
+}
+
+input[type="date"] {
+  -webkit-appearance: textfield;
+}
+input[type="date"]::-webkit-search-decoration {
+  -webkit-appearance: none;
 }
 
 .gender-options {
@@ -98,4 +106,5 @@
   background-color: rgb(42, 237, 217);
   color: white;
   transition: background-color 0.3s;
+  font-size: 18px;
 }
