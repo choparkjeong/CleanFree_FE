@@ -12,6 +12,8 @@ import { getListData } from "@/services/getListData";
 import { truncateText } from "@/utils/text/truncateText";
 
 const Home: React.FC = () => {
+  //test
+
   const [inputValue, setInputValue] = useState<string>("");
   const [listData, setListData] = useState<any[]>([]);
   const [refresh, setRefresh] = useState(false);
