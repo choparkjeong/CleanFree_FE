@@ -96,6 +96,12 @@ const Page: React.FC = (props) => {
     return () => container?.removeEventListener("scroll", handleScroll);
   }, []);
 
+  //글 길이
+  const truncate = (text: string, length: number) => {
+    if (text.length <= length) return text;
+    return text.substring(0, length) + "...";
+  };
+
   return (
     <>
       <ResultHeader />
@@ -103,7 +109,12 @@ const Page: React.FC = (props) => {
       <div className={styles["result-container1"]}>{resultData?.question}</div>
       <Title title="화장품 추천" />
       <div className={styles["result-container2"]}>
-        <div className={styles["details"]}>
+        <Link
+          href={resultData?.cosmetics[activeIndex].url || "#"}
+          className={styles["details"]}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className={styles["details-layout1"]}>
             <img
               src={resultData?.cosmetics[activeIndex].image}
@@ -135,7 +146,7 @@ const Page: React.FC = (props) => {
               </div>
             </div>
           </div>
-        </div>
+        </Link>
 
         <div className={styles["scroll-container"]} ref={containerRef}>
           <div className={styles["scroll-content"]}>
@@ -153,7 +164,7 @@ const Page: React.FC = (props) => {
                   alt="이미지 없음"
                   style={{ width: "55px", height: "55px", borderRadius: "5px" }}
                 />
-                <div>{product.cosmetic}</div>
+                <div>{truncate(product.cosmetic, 20)}</div>
               </div>
             ))}
             <div className={styles["scroll-item-dummy"]}></div>

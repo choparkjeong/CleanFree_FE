@@ -18,10 +18,9 @@ export async function postSearchData(inputValue: any) {
       }),
     }
   );
-  console.log(res);
+  const data = await res.json();
 
   if (res.ok) {
-    console.log("새로고침");
     return;
   }
 }

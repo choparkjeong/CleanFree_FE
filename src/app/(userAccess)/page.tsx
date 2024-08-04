@@ -10,6 +10,7 @@ import CircleAnimation from "@/components/ui/CircleAnimation";
 import { postSearchData } from "@/services/postSearchData";
 import { getListData } from "@/services/getListData";
 import { truncateText } from "@/utils/text/truncateText";
+import Swal from "sweetalert2";
 
 const Home: React.FC = () => {
   //test
@@ -43,6 +44,11 @@ const Home: React.FC = () => {
   const handleSearchClick = async () => {
     if (inputValue.trim()) {
       await postSearchData(inputValue);
+      // Swal.fire({
+      //   icon: "success",
+      //   title: "하루 이용을 다하셨습니다!",
+      //   confirmButtonText: "OK",
+      // });
       setInputValue("");
       setRefresh(!refresh);
     }
