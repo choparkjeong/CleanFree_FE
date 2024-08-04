@@ -34,6 +34,7 @@ interface ResultData {
   resultId: string;
   memberUuid: string;
   question: string;
+  answer: string;
   cosmetics: Cosmetic[];
   ingredients: string[];
   references: References;
@@ -107,6 +108,8 @@ const Page: React.FC = (props) => {
       <ResultHeader />
       <Title title="검색 내용" />
       <div className={styles["result-container1"]}>{resultData?.question}</div>
+      <Title title="검색 답변" />
+      <div className={styles["result-container1"]}>{resultData?.answer}</div>
       <Title title="화장품 추천" />
       <div className={styles["result-container2"]}>
         <Link
