@@ -64,6 +64,29 @@
   text-align: center;
 }
 
+.result-container5 {
+  // background-color: red;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.solution-item {
+  margin-top: 1vh;
+}
+
+.result-container5 .solution-item:first-child {
+  margin-top: 0vh;
+}
+
+.solution-item-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.solution-item-content {
+  font-size: 13px;
+}
+
 .reference-item1 {
   background-color: rgb(255, 27, 27);
 }

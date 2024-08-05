@@ -30,12 +30,18 @@ interface References {
   etc: string[];
 }
 
+interface Solutions {
+  title: string;
+  content: string;
+}
+
 interface ResultData {
   resultId: string;
   memberUuid: string;
   question: string;
   answer: string;
   cosmetics: Cosmetic[];
+  solutions: Solutions[];
   ingredients: string[];
   references: References;
   isAnalyze: boolean;
@@ -180,6 +186,21 @@ const Page: React.FC = (props) => {
           <div key={index}>{ingredient}</div>
         ))}
       </div>
+      {resultData?.solutions && (
+        <>
+          <Title title="솔루션" />
+          <div className={styles["result-container5"]}>
+            {resultData?.solutions.map((sol, index) => (
+              <div key={index} className={styles["solution-item"]}>
+                <div className={styles["solution-item-title"]}>{sol.title}</div>
+                <div className={styles["solution-item-content"]}>
+                  {sol.content}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
       <Title title="출처 및 참고" />
       <div className={styles["result-container4"]}>
         {resultData?.references.youtube.map((url, index) => (
