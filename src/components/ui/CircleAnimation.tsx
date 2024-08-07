@@ -5,9 +5,10 @@ interface Props {
 }
 
 const CircleAnimation = ({ valid }: Props) => {
+  console.log(valid);
   return (
     <>
-      {valid && (
+      {!valid && (
         <div className="container">
           <div className="loader fade-in">
             <img
@@ -18,7 +19,7 @@ const CircleAnimation = ({ valid }: Props) => {
           </div>
         </div>
       )}
-      {!valid && (
+      {valid && (
         <div className="container-valid-layout">
           <div className="valid">
             <img

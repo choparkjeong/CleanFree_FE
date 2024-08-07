@@ -14,8 +14,6 @@ import Swal from "sweetalert2";
 import { getSearchCountData } from "@/services/getSearchCountData";
 
 const Home: React.FC = () => {
-  //test
-
   const [inputValue, setInputValue] = useState<string>("");
   const [listData, setListData] = useState<any[]>([]);
   const [countData, setCountData] = useState<string>("");
@@ -39,14 +37,13 @@ const Home: React.FC = () => {
       setListData(data);
     };
 
-    //검색 횟수 호출
+    // 검색 횟수 호출
     const handleCountData = async () => {
       const data = await getSearchCountData();
       setCountData(data !== undefined ? String(data) : "0");
     };
 
     handleCountData();
-
     handleListData();
   }, [refresh]);
 
@@ -54,11 +51,6 @@ const Home: React.FC = () => {
   const handleSearchClick = async () => {
     if (inputValue.trim()) {
       await postSearchData(inputValue);
-      // Swal.fire({
-      //   icon: "success",
-      //   title: "하루 이용을 다하셨습니다!",
-      //   confirmButtonText: "OK",
-      // });
       setInputValue("");
       setRefresh(!refresh);
     }
@@ -74,14 +66,17 @@ const Home: React.FC = () => {
       content: item.isAnalyze,
     }));
 
+  // Check if scrollItems is not empty
+  // console.log(scrollItems.length > 0 ? scrollItems[0].content : false);
+  const valid = scrollItems.length > 0 ? scrollItems[0].content : "";
   return (
     <>
       <MainHeader />
 
       <main className={styles["main-layout"]}>
-        <CircleAnimation valid={true} />
+        <CircleAnimation valid={valid} />
 
-        {countData == "0" && (
+        {countData === "0" && (
           <div
             style={{
               width: "100%",
@@ -93,7 +88,7 @@ const Home: React.FC = () => {
             남은 횟수가 없습니다! 자정에 초기화됩니다
           </div>
         )}
-        {countData == "1" && (
+        {countData === "1" && (
           <div
             style={{
               width: "100%",
@@ -115,7 +110,7 @@ const Home: React.FC = () => {
             <div className={styles["scroll-list"]}>
               {scrollItems.map((item, index) => (
                 <div key={index}>
-                  {item.content && (
+                  {item.content ? (
                     <Link
                       href={`/result/${item.resultId}`}
                       className={styles["scroll-item"]}
@@ -125,8 +120,7 @@ const Home: React.FC = () => {
                         {truncateText(item.question, 15)}
                       </div>
                     </Link>
-                  )}
-                  {!item.content && (
+                  ) : (
                     <div className={styles["scroll-item"]}>
                       <div className={styles["scroll-item1-invalid"]}>
                         분석중
