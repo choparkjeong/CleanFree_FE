@@ -71,3 +71,28 @@
     opacity: 1;
   }
 }
+
+.container-valid-layout {
+  font-family: sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 2s ease-in-out;
+  height: 270px;
+}
+
+.valid {
+  width: 270px;
+  height: 270px;
+  line-height: 150px;
+  margin: 100px auto;
+  position: relative;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 0;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

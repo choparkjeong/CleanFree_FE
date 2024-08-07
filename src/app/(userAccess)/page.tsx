@@ -79,7 +79,8 @@ const Home: React.FC = () => {
       <MainHeader />
 
       <main className={styles["main-layout"]}>
-        <CircleAnimation />
+        <CircleAnimation valid={true} />
+
         {countData == "0" && (
           <div
             style={{
