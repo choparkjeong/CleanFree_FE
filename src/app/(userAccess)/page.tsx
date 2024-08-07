@@ -11,12 +11,14 @@ import { postSearchData } from "@/services/postSearchData";
 import { getListData } from "@/services/getListData";
 import { truncateText } from "@/utils/text/truncateText";
 import Swal from "sweetalert2";
+import { getSearchCountData } from "@/services/getSearchCountData";
 
 const Home: React.FC = () => {
   //test
 
   const [inputValue, setInputValue] = useState<string>("");
   const [listData, setListData] = useState<any[]>([]);
+  const [countData, setCountData] = useState<string>("");
   const [refresh, setRefresh] = useState(false);
   const textareaRef = useAutosizeTextArea(inputValue);
 
@@ -36,6 +38,14 @@ const Home: React.FC = () => {
       const data = await getListData();
       setListData(data);
     };
+
+    //검색 횟수 호출
+    const handleCountData = async () => {
+      const data = await getSearchCountData();
+      setCountData(data !== undefined ? String(data) : "0");
+    };
+
+    handleCountData();
 
     handleListData();
   }, [refresh]);
@@ -70,6 +80,34 @@ const Home: React.FC = () => {
 
       <main className={styles["main-layout"]}>
         <CircleAnimation />
+        {countData == "0" && (
+          <div
+            style={{
+              width: "100%",
+              textAlign: "center",
+              fontSize: "14px",
+              color: "grey",
+            }}
+          >
+            남은 횟수가 없습니다! 자정에 초기화됩니다
+          </div>
+        )}
+        {countData == "1" && (
+          <div
+            style={{
+              width: "100%",
+              textAlign: "center",
+              fontSize: "14px",
+              color: "grey",
+            }}
+          >
+            오늘 남은 횟수
+            <span style={{ color: "rgb(10, 197, 179)", fontWeight: "bold" }}>
+              {countData}회
+            </span>
+            입니다!
+          </div>
+        )}
         <div style={{ width: "100%" }}>
           {/* 스크롤 리스트 */}
           <div className={styles["scroll-container"]}>
