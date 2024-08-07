@@ -127,7 +127,7 @@ const Page: React.FC = (props) => {
           <div className={styles["details-layout1"]}>
             <img
               src={resultData?.cosmetics[activeIndex].image}
-              style={{ width: "100%", height: "100%", borderRadius: "5px" }}
+              alt="Cosmetic" // 이미지에 대한 설명 추가 (접근성 향상)
             />
           </div>
           <div className={styles["details-layout2"]}>
