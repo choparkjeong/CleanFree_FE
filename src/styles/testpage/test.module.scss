@@ -52,7 +52,131 @@
 .detail1 {
   font-size: 12px;
   margin-top: 20px;
+  word-wrap: break-word; /* For older browsers */
+  overflow-wrap: break-word; /* Modern standard */
+  word-break: break-word; /* Ensures breaking within long words */
+  width: 90vw;
+  //   background-color: yellow;
+  text-align: center;
 }
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-//cozyhome 입니다.
+//createvalue 입니다.
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; // Full viewport height
+}
+
+.logo2 {
+  width: 350px; // Adjust the width of the logo
+  margin-bottom: 20px; // Space between logo and search bar
+}
+
+.searchBarContainer2 {
+  display: flex;
+  align-items: center;
+  gap: 8px; // Adds some space between the input and button
+}
+
+.searchBar2 {
+  flex: 1; // This allows the input to grow and fill available space
+  height: 40px; // Match the button height
+  padding: 0 10px; // Padding inside the input
+  font-size: 11px; // Match font size if needed
+  border: 1px solid #ccc; // Border for the input
+  border-radius: 4px; // Rounded corners for the input
+  min-width: 250px; // Ensure the input is long enough; adjust as needed
+}
+
+.searchButton2 {
+  height: 40px; // Same height as the input
+  padding: 0 10px; // Padding inside the button
+  font-size: 16px; // Match font size if needed
+  background-color: #e7a76b; // Button background color
+  color: #fff; // Button text color
+  border: none; // Remove default border
+  border-radius: 4px; // Rounded corners for the button
+  cursor: pointer; // Change cursor to pointer on hover
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s; // Smooth color transition on hover
+}
+
+.searchButton2:hover {
+  background-color: rgb(223, 124, 49); // Darker shade for hover effect
+}
+
+.detail2 {
+  font-size: 12px;
+  margin-top: 20px;
+  overflow-wrap: break-word; /* Modern standard */
+  word-break: break-word; /* Ensures breaking within long words */
+  width: 90vw;
+  text-align: center;
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+//consultant 입니다.
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.container3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; // Full viewport height
+}
+
+.logo3 {
+  width: 350px; // Adjust the width of the logo
+  margin-bottom: 20px; // Space between logo and search bar
+}
+
+.searchBarContainer3 {
+  display: flex;
+  align-items: center;
+  gap: 8px; // Adds some space between the input and button
+}
+
+.searchBar3 {
+  flex: 1; // This allows the input to grow and fill available space
+  height: 40px; // Match the button height
+  padding: 0 10px; // Padding inside the input
+  font-size: 11px; // Match font size if needed
+  border: 1px solid #ccc; // Border for the input
+  border-radius: 4px; // Rounded corners for the input
+  min-width: 250px; // Ensure the input is long enough; adjust as needed
+}
+
+.searchButton3 {
+  height: 40px; // Same height as the input
+  padding: 0 10px; // Padding inside the button
+  font-size: 16px; // Match font size if needed
+  background-color: #a7a7a7; // Button background color
+  color: #fff; // Button text color
+  border: none; // Remove default border
+  border-radius: 4px; // Rounded corners for the button
+  cursor: pointer; // Change cursor to pointer on hover
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s; // Smooth color transition on hover
+  //   font-weight: 550;
+}
+
+.searchButton3:hover {
+  background-color: rgb(109, 109, 109); // Darker shade for hover effect
+}
+
+.detail3 {
+  font-size: 12px;
+  margin-top: 20px;
+  overflow-wrap: break-word; /* Modern standard */
+  word-break: break-word; /* Ensures breaking within long words */
+  width: 90vw;
+  text-align: center;
+}
