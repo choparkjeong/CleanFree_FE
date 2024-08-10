@@ -49,6 +49,11 @@ const Page: React.FC = () => {
         집밥 대행 서비스로 건강하게 식사하세요."
               link="/cookingstation"
             />
+            <TableRow
+              imageSrc="/dummy/curesliver.png"
+              description="요양원 노인 데이터 수기 관리, 이제 프로그램으로 간편하게 관리하세요."
+              link="/curesliver"
+            />
             {/* 추가적인 항목들 */}
           </tbody>
         </table>
