@@ -17,7 +17,7 @@ const Page: React.FC = () => {
 
   const handleSearch = async () => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/curesliver/register`,
+      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/curesilver/register`,
       {
         method: "POST",
         headers: {

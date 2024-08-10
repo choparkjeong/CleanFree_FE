@@ -52,7 +52,7 @@ const Page: React.FC = () => {
             <TableRow
               imageSrc="/dummy/curesliver.png"
               description="요양원 노인 데이터 수기 관리, 이제 프로그램으로 간편하게 관리하세요."
-              link="/curesliver"
+              link="/curesilver"
             />
             <TableRow
               imageSrc="/dummy/carrycabin.png"
