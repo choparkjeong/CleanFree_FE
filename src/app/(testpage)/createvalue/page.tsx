@@ -11,7 +11,7 @@ const Page: React.FC = () => {
     if (!searchQuery) return;
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/cozyquick/search`,
+      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/createvalue/search`,
       {
         method: "POST",
         headers: {
