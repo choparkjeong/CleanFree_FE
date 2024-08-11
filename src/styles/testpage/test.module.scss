@@ -363,3 +363,125 @@
   width: 90vw;
   text-align: center;
 }
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+//clearvisa.
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.container7 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; // Full viewport height
+}
+
+.logo7 {
+  width: 350px; // Adjust the width of the logo
+  margin-bottom: 20px; // Space between logo and search bar
+}
+
+.searchBarContainer7 {
+  display: flex;
+  align-items: center;
+  gap: 8px; // Adds some space between the input and button
+}
+
+.searchBar7 {
+  flex: 1; // This allows the input to grow and fill available space
+  height: 40px; // Match the button height
+  padding: 0 10px; // Padding inside the input
+  font-size: 11px; // Match font size if needed
+  border: 1px solid #ccc; // Border for the input
+  border-radius: 4px; // Rounded corners for the input
+  min-width: 250px; // Ensure the input is long enough; adjust as needed
+}
+
+.searchButton7 {
+  height: 40px; // Same height as the input
+  padding: 0 10px; // Padding inside the button
+  font-size: 16px; // Match font size if needed
+  background-color: #068840; // Button background color
+  color: #fff; // Button text color
+  border: none; // Remove default border
+  border-radius: 4px; // Rounded corners for the button
+  cursor: pointer; // Change cursor to pointer on hover
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s; // Smooth color transition on hover
+  //   font-weight: 550;
+}
+
+.searchButton7:hover {
+  background-color: #023b1c; // Darker shade for hover effect
+}
+
+.detail7 {
+  font-size: 12px;
+  margin-top: 20px;
+  overflow-wrap: break-word; /* Modern standard */
+  word-break: break-word; /* Ensures breaking within long words */
+  width: 90vw;
+  text-align: center;
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+//cozyhouse.
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.container8 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; // Full viewport height
+}
+
+.logo8 {
+  width: 350px; // Adjust the width of the logo
+  margin-bottom: 20px; // Space between logo and search bar
+}
+
+.searchBarContainer8 {
+  display: flex;
+  align-items: center;
+  gap: 8px; // Adds some space between the input and button
+}
+
+.searchBar8 {
+  flex: 1; // This allows the input to grow and fill available space
+  height: 40px; // Match the button height
+  padding: 0 10px; // Padding inside the input
+  font-size: 11px; // Match font size if needed
+  border: 1px solid #ccc; // Border for the input
+  border-radius: 4px; // Rounded corners for the input
+  min-width: 250px; // Ensure the input is long enough; adjust as needed
+}
+
+.searchButton8 {
+  height: 40px; // Same height as the input
+  padding: 0 10px; // Padding inside the button
+  font-size: 16px; // Match font size if needed
+  background-color: #5a5547; // Button background color
+  color: #fff; // Button text color
+  border: none; // Remove default border
+  border-radius: 4px; // Rounded corners for the button
+  cursor: pointer; // Change cursor to pointer on hover
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s; // Smooth color transition on hover
+  //   font-weight: 550;
+}
+
+.searchButton8:hover {
+  background-color: #3a372f; // Darker shade for hover effect
+}
+
+.detail8 {
+  font-size: 12px;
+  margin-top: 20px;
+  overflow-wrap: break-word; /* Modern standard */
+  word-break: break-word; /* Ensures breaking within long words */
+  width: 90vw;
+  text-align: center;
+}
