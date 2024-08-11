@@ -1,10 +1,37 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/testpage/test.module.scss";
 import Swal from "sweetalert2"; // Import SweetAlert2
+import { postCountData } from "@/services/postCountData";
 
 const Page: React.FC = () => {
+  const [ipAddress, setIpAddress] = useState<string | null>(null); // Use string | null to handle initial state
+
+  useEffect(() => {
+    // Function to fetch IP address
+    const fetchIpAddress = async () => {
+      try {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const data = await response.json();
+        setIpAddress(data.ip);
+      } catch (error) {
+        console.error("Error fetching IP address:", error);
+      }
+    };
+
+    fetchIpAddress();
+  }, []);
+
+  useEffect(() => {
+    // Function to fetch IP address
+    const fetchIpAddress = async () => {
+      await postCountData({ ip: ipAddress, service: "createvalue" });
+    };
+
+    fetchIpAddress();
+  }, [ipAddress]);
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = async () => {

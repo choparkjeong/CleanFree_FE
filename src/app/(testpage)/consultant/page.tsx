@@ -3,17 +3,34 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/testpage/test.module.scss";
 import Swal from "sweetalert2"; // Import SweetAlert2
+import { postCountData } from "@/services/postCountData";
 
 const Page: React.FC = () => {
-  const [ipAddress, setIpAddress] = useState("");
+  const [ipAddress, setIpAddress] = useState<string | null>(null); // Use string | null to handle initial state
 
   useEffect(() => {
-    // IP 주소를 가져오는 API 호출
-    fetch("https://api.ipify.org?format=json")
-      .then((response) => response.json())
-      .then((data) => setIpAddress(data.ip))
-      .catch((error) => console.error("Error fetching IP address:", error));
+    // Function to fetch IP address
+    const fetchIpAddress = async () => {
+      try {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const data = await response.json();
+        setIpAddress(data.ip);
+      } catch (error) {
+        console.error("Error fetching IP address:", error);
+      }
+    };
+
+    fetchIpAddress();
   }, []);
+
+  useEffect(() => {
+    // Function to fetch IP address
+    const fetchIpAddress = async () => {
+      await postCountData({ ip: ipAddress, service: "consultant" });
+    };
+
+    fetchIpAddress();
+  }, [ipAddress]);
 
   const handleSearch = async () => {
     const res = await fetch(
