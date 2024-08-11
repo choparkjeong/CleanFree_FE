@@ -1,11 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/testpage/test.module.scss";
 import Swal from "sweetalert2"; // Import SweetAlert2
 
 const Page: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [ipAddress, setIpAddress] = useState("");
+
+  useEffect(() => {
+    // IP 주소를 가져오는 API 호출
+    fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => setIpAddress(data.ip))
+      .catch((error) => console.error("Error fetching IP address:", error));
+  }, []);
 
   const handleSearch = async () => {
     if (!searchQuery) return;
@@ -19,6 +28,7 @@ const Page: React.FC = () => {
         },
         body: JSON.stringify({
           search: searchQuery,
+          ip: ipAddress,
         }),
       }
     );
