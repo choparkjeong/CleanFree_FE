@@ -33,8 +33,8 @@ const Page: React.FC = () => {
     );
     if (res.ok) {
       Swal.fire({
-        icon: "warning",
-        title: "접수되었습니다.",
+        icon: "success",
+        title: "completed!",
       });
     } else {
       Swal.fire({

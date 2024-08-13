@@ -34,7 +34,7 @@ const Page: React.FC = () => {
     );
     if (res.ok) {
       Swal.fire({
-        icon: "warning",
+        icon: "success",
         title: "접수되었습니다.",
       });
     } else {
