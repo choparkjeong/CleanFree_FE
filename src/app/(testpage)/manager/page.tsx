@@ -56,7 +56,7 @@ const Page: React.FC = () => {
             />
             <TableRow
               imageSrc="/dummy/carrycabin.png"
-              description="공항에 도착한 후, 예약한 숙소로 짐을 안전하게 배달해 드립니다. 편안한 여행을 시작하세요."
+              description="When you arrive at the airport, we will deliver your luggage directly to your hotel. Enjoy a comfortable trip with us!"
               link="/carrycabin"
             />
             <TableRow

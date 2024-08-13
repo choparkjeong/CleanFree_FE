@@ -48,8 +48,8 @@ const Page: React.FC = () => {
     if (res.ok) {
       Swal.fire({
         icon: "warning",
-        title: "접수자가 많습니다.!",
-        text: "나중에 다시 이용해주세요",
+        title: "We have a high volume of applications at the moment.",
+        text: "Please check back later",
       });
     }
   };
@@ -59,12 +59,12 @@ const Page: React.FC = () => {
       <img src="/dummy/carrycabin.png" alt="Logo" className={styles.logo6} />
       <div className={styles.searchBarContainer6}>
         <button onClick={handleSearch} className={styles.searchButton6}>
-          사전신청 하러가기
+          Apply now
         </button>
       </div>
       <div className={styles.detail6}>
-        공항에 도착한 후, 예약한 숙소로 짐을 안전하게 배달해 드립니다. 편안한
-        여행을 시작하세요.
+        When you arrive at the airport, we will deliver your luggage directly to
+        your hotel. Enjoy a comfortable trip with us!
       </div>
     </main>
   );
