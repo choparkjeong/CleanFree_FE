@@ -32,24 +32,19 @@ const Page: React.FC = () => {
     fetchIpAddress();
   }, [ipAddress]);
 
-  const [searchQuery, setSearchQuery] = useState("");
-
   const handleSearch = async () => {
-    if (!searchQuery) return;
-
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/createvalue/search`,
+      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/createvalue/register`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          search: searchQuery,
+          ip: ipAddress,
         }),
       }
     );
-
     if (res.ok) {
       Swal.fire({
         icon: "warning",
@@ -59,31 +54,16 @@ const Page: React.FC = () => {
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault(); // Prevent the default action if necessary
-      handleSearch();
-    }
-  };
-
   return (
-    <main className={styles.container2}>
-      <img src="/dummy/createvalue.png" alt="Logo" className={styles.logo2} />
-      <div className={styles.searchBarContainer2}>
-        <input
-          type="text"
-          placeholder="가지고 있는 능력들을 모두 자유롭게 기입해주세요."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyDown={handleKeyDown} // Add this line
-          className={styles.searchBar2}
-        />
-        <button onClick={handleSearch} className={styles.searchButton2}>
-          Search
+    <main className={styles.container9}>
+      <img src="/dummy/createvalue.png" alt="Logo" className={styles.logo9} />
+      <div className={styles.searchBarContainer9}>
+        <button onClick={handleSearch} className={styles.searchButton9}>
+          사전신청 하러가기
         </button>
       </div>
-      <div className={styles.detail2}>
-        입력하신 능력들을 토대로, 수익 전환 방법들을 찾고 과정을 도와드립니다.
+      <div className={styles.detail9}>
+        수익 창출 방법을 모르시는 인플루언서신가요. 이제 수익창출하세요.
       </div>
     </main>
   );

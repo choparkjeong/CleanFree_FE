@@ -485,3 +485,125 @@
   width: 90vw;
   text-align: center;
 }
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+//createvalue.
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.container9 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; // Full viewport height
+}
+
+.logo9 {
+  width: 350px; // Adjust the width of the logo
+  margin-bottom: 20px; // Space between logo and search bar
+}
+
+.searchBarContainer9 {
+  display: flex;
+  align-items: center;
+  gap: 8px; // Adds some space between the input and button
+}
+
+.searchBar9 {
+  flex: 1; // This allows the input to grow and fill available space
+  height: 40px; // Match the button height
+  padding: 0 10px; // Padding inside the input
+  font-size: 11px; // Match font size if needed
+  border: 1px solid #ccc; // Border for the input
+  border-radius: 4px; // Rounded corners for the input
+  min-width: 250px; // Ensure the input is long enough; adjust as needed
+}
+
+.searchButton9 {
+  height: 40px; // Same height as the input
+  padding: 0 10px; // Padding inside the button
+  font-size: 16px; // Match font size if needed
+  background-color: #d99058; // Button background color
+  color: #fff; // Button text color
+  border: none; // Remove default border
+  border-radius: 4px; // Rounded corners for the button
+  cursor: pointer; // Change cursor to pointer on hover
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s; // Smooth color transition on hover
+  //   font-weight: 550;
+}
+
+.searchButton9:hover {
+  background-color: #845532; // Darker shade for hover effect
+}
+
+.detail9 {
+  font-size: 12px;
+  margin-top: 20px;
+  overflow-wrap: break-word; /* Modern standard */
+  word-break: break-word; /* Ensures breaking within long words */
+  width: 90vw;
+  text-align: center;
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+//createeasy.
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.container10 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; // Full viewport height
+}
+
+.logo10 {
+  width: 350px; // Adjust the width of the logo
+  margin-bottom: 20px; // Space between logo and search bar
+}
+
+.searchBarContainer10 {
+  display: flex;
+  align-items: center;
+  gap: 8px; // Adds some space between the input and button
+}
+
+.searchBar10 {
+  flex: 1; // This allows the input to grow and fill available space
+  height: 40px; // Match the button height
+  padding: 0 10px; // Padding inside the input
+  font-size: 11px; // Match font size if needed
+  border: 1px solid #ccc; // Border for the input
+  border-radius: 4px; // Rounded corners for the input
+  min-width: 250px; // Ensure the input is long enough; adjust as needed
+}
+
+.searchButton10 {
+  height: 40px; // Same height as the input
+  padding: 0 10px; // Padding inside the button
+  font-size: 16px; // Match font size if needed
+  background-color: #cebeb2; // Button background color
+  color: #fff; // Button text color
+  border: none; // Remove default border
+  border-radius: 4px; // Rounded corners for the button
+  cursor: pointer; // Change cursor to pointer on hover
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s; // Smooth color transition on hover
+  //   font-weight: 550;
+}
+
+.searchButton10:hover {
+  background-color: #9c8e83; // Darker shade for hover effect
+}
+
+.detail10 {
+  font-size: 12px;
+  margin-top: 20px;
+  overflow-wrap: break-word; /* Modern standard */
+  word-break: break-word; /* Ensures breaking within long words */
+  width: 90vw;
+  text-align: center;
+}

@@ -26,7 +26,7 @@ const Page: React.FC = () => {
   useEffect(() => {
     // Function to fetch IP address
     const fetchIpAddress = async () => {
-      await postCountData({ ip: ipAddress, service: "consultant" });
+      await postCountData({ ip: ipAddress, service: "createeasy" });
     };
 
     fetchIpAddress();
@@ -34,7 +34,7 @@ const Page: React.FC = () => {
 
   const handleSearch = async () => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/consultant/register`,
+      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/createeasy/register`,
       {
         method: "POST",
         headers: {
@@ -55,23 +55,15 @@ const Page: React.FC = () => {
   };
 
   return (
-    <main className={styles.container3}>
-      <img src="/dummy/consultant.png" alt="Logo" className={styles.logo3} />
-      <div className={styles.searchBarContainer3}>
-        {/* <input
-          type="text"
-          placeholder="종사하고 계시는 업종을 입력해주세요."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyDown={handleKeyDown} // Add this line
-          className={styles.searchBar3}
-        /> */}
-        <button onClick={handleSearch} className={styles.searchButton3}>
+    <main className={styles.container10}>
+      <img src="/dummy/createeasy.png" alt="Logo" className={styles.logo10} />
+      <div className={styles.searchBarContainer10}>
+        <button onClick={handleSearch} className={styles.searchButton10}>
           사전신청 하러가기
         </button>
       </div>
-      <div className={styles.detail3}>
-        고객 데이터 분석을 통해, 매출 증대를 도와드립니다.
+      <div className={styles.detail10}>
+        트랜드에 맞는 컨텐츠 기획하기 어려우신가요. 저희가 도와드릴게요.{" "}
       </div>
     </main>
   );

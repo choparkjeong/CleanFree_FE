@@ -34,16 +34,6 @@ const Page: React.FC = () => {
               link="/cozyquick"
             />
             <TableRow
-              imageSrc="/dummy/createvalue.png"
-              description="입력하신 능력들을 토대로, 수익 전환 방법들을 찾고 과정을 도와드립니다."
-              link="/createvalue"
-            />
-            <TableRow
-              imageSrc="/dummy/consultant.png"
-              description="고객 데이터 분석을 통해, 매출 증대를 도와드립니다."
-              link="/consultant"
-            />
-            <TableRow
               imageSrc="/dummy/cookingstation.png"
               description="자취러들 주목! 집에도착하면, 원하는 요리가 있습니다! 현대판 우렁각시,
         집밥 대행 서비스로 건강하게 식사하세요."
@@ -68,6 +58,16 @@ const Page: React.FC = () => {
               imageSrc="/dummy/cozyhouse.png"
               description="We assist foreigners with everything about house contract, ensuring a smooth real estate experience."
               link="/cozyhouse"
+            />
+            <TableRow
+              imageSrc="/dummy/createvalue.png"
+              description="수익 창출 방법을 모르시는 인플루언서신가요. 이제 수익창출하세요."
+              link="/createvalue"
+            />
+            <TableRow
+              imageSrc="/dummy/createeasy.png"
+              description="트랜드에 맞는 컨텐츠 기획하기 어려우신가요. 저희가 도와드릴게요."
+              link="/createeasy"
             />
             {/* 추가적인 항목들 */}
           </tbody>
