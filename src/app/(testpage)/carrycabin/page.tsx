@@ -6,10 +6,10 @@ import Swal from "sweetalert2"; // Import SweetAlert2
 
 const Page: React.FC = () => {
   const [name, setName] = useState<string>(""); // State for the name
-  const [phoneNumber, setPhoneNumber] = useState<string>(""); // State for the phone number
+  const [email, setEmail] = useState<string>(""); // State for the phone number
 
   const handleSearch = async () => {
-    if (!name || !phoneNumber) {
+    if (!name || !email) {
       Swal.fire({
         icon: "error",
         title: "입력 오류",
@@ -27,7 +27,7 @@ const Page: React.FC = () => {
         },
         body: JSON.stringify({
           name,
-          phoneNumber,
+          email,
         }),
       }
     );
@@ -69,12 +69,12 @@ const Page: React.FC = () => {
           </div>
           <div className={styles.inputGroup6}>
             <input
-              id="phoneNumber"
+              id="email"
               type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className={styles.input6}
-              placeholder="phone number"
+              placeholder="email"
               required
             />
           </div>
