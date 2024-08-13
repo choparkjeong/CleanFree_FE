@@ -3,36 +3,21 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/testpage/test.module.scss";
 import Swal from "sweetalert2"; // Import SweetAlert2
-import { postCountData } from "@/services/postCountData";
 
 const Page: React.FC = () => {
-  const [ipAddress, setIpAddress] = useState<string | null>(null); // Use string | null to handle initial state
-
-  useEffect(() => {
-    // Function to fetch IP address
-    const fetchIpAddress = async () => {
-      try {
-        const response = await fetch("https://api.ipify.org?format=json");
-        const data = await response.json();
-        setIpAddress(data.ip);
-      } catch (error) {
-        console.error("Error fetching IP address:", error);
-      }
-    };
-
-    fetchIpAddress();
-  }, []);
-
-  useEffect(() => {
-    // Function to fetch IP address
-    const fetchIpAddress = async () => {
-      await postCountData({ ip: ipAddress, service: "createvalue" });
-    };
-
-    fetchIpAddress();
-  }, [ipAddress]);
+  const [name, setName] = useState<string>(""); // State for the name
+  const [phoneNumber, setPhoneNumber] = useState<string>(""); // State for the phone number
 
   const handleSearch = async () => {
+    if (!name || !phoneNumber) {
+      Swal.fire({
+        icon: "error",
+        title: "입력 오류",
+        text: "이름과 번호를 모두 입력해 주세요.",
+      });
+      return;
+    }
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/createvalue/register`,
       {
@@ -41,15 +26,21 @@ const Page: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ip: ipAddress,
+          name,
+          phoneNumber,
         }),
       }
     );
     if (res.ok) {
       Swal.fire({
         icon: "warning",
-        title: "접수자가 많습니다.!",
-        text: "나중에 다시 이용해주세요",
+        title: "접수되었습니다.",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "서버 오류",
+        text: "서버에 문제가 발생했습니다. 나중에 다시 시도해 주세요.",
       });
     }
   };
@@ -58,9 +49,39 @@ const Page: React.FC = () => {
     <main className={styles.container9}>
       <img src="/dummy/createvalue.png" alt="Logo" className={styles.logo9} />
       <div className={styles.searchBarContainer9}>
-        <button onClick={handleSearch} className={styles.searchButton9}>
-          사전신청 하러가기
-        </button>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearch();
+          }}
+          className={styles.form9}
+        >
+          <div className={styles.inputGroup9}>
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={styles.input9}
+              placeholder="이름을 입력하세요"
+              required
+            />
+          </div>
+          <div className={styles.inputGroup9}>
+            <input
+              id="phoneNumber"
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              className={styles.input10}
+              placeholder="번호를 입력하세요"
+              required
+            />
+          </div>
+          <button type="submit" className={styles.searchButton9}>
+            사전신청 하러가기
+          </button>
+        </form>
       </div>
       <div className={styles.detail9}>
         수익 창출 방법을 모르시는 인플루언서신가요. 이제 수익창출하세요.
